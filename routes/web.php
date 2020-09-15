@@ -33,7 +33,7 @@ Auth::routes();
 //Route::get('/logout/{device_id}', 'Admin\LoggedInDeviceManager@logoutDevice')->name('logged-in-devices.logoutSpecific')->middleware('auth');
 
 //Admin route
-Route::prefix('appadmin')->middleware('auth')->group(base_path('routes/admin.php'));
+Route::prefix('/appadmin')->middleware('auth')->group(base_path('routes/admin.php'));
 
 //Digishop theme route file
 Route::prefix('/digishop')->group(base_path('routes/digishop.php'));
@@ -42,3 +42,5 @@ Route::prefix('/digishop')->group(base_path('routes/digishop.php'));
 Route::prefix('/lms')->middleware('auth')->group(base_path('routes/lms.php'));
 
 //Matrimony
+Route::prefix('/matrimony')->group(base_path('routes/matrimony.php'));
+
