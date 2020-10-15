@@ -47,9 +47,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if($exception instanceOf MethodNotAllowedHttpException){
-            return response()->json(['error'=>'Bad Request'],400);
-        }
+        // if($exception instanceOf MethodNotAllowedHttpException){
+        //     return response()->json(['error'=>'Bad Request'],400);
+        // }
 
         return parent::render($request, $exception);
     }

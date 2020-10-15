@@ -26,7 +26,7 @@ class PostNotifyToSubscribers
      */
     public function handle(PostPublishEvent $event)
     {
-        app('log')->debug('This post notification will be set to all subscribers');
+        //app('log')->debug('This post notification will be set to all subscribers');
         if($event->post->notify == 'on'){
              app('log')->debug('This post notification will be set to all subscribers');
         }

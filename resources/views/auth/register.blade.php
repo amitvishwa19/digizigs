@@ -1,81 +1,88 @@
 @extends('auth.layout')
 
+@section('title','Register')
+
 @section('content')
-<div class="container">
-    <div class="media align-items-stretch justify-content-center ht-100p">
-        <div class="sign-wrapper mg-lg-r-50 mg-xl-r-60">
-        <div class="pd-t-20 wd-100p">
-            <h4 class="tx-color-01 mg-b-5">Create New Account</h4>
-            <p class="tx-color-03 tx-16 mg-b-40">It's free to signup and only takes a minute.</p>
+    <div class="login-page">
+        <div class="row">
+            <div class="col-9 left-area">
+                <img src="https://miro.medium.com/max/2625/1*qAX1633WKgkCBjW-7BICCA.jpeg" alt="">
 
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-                <div class="form-group">
-                    <label>Email address *</label>
-                    <input type="email" class="form-control @error('name') is-invalid @enderror" placeholder="Enter your email address" name="email" value="{{ old('email') }}">
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+            </div>
+
+            <div class="col-3 right-area">
+
+                <div class="login-content">
+                    <div class="brand-logo">
+                        <a href="{{route('home')}}">
+                            <img src="{{asset('public/admin/assets/1598601943DZ-Logo Orange-black.png')}}" alt="" style="width: 150px;">
+                         </a>
+                    </div>
+
+                    <div class="login-form">
+                        <form method="POST" action="{{ route('register') }}" class="mg-b-20">
+                            @csrf
+                            <h5 class="info-title">Sign Up for New account</h5>
+
+                            @if(Session::has('inactive'))
+                              <!-- <p class="alert alert-info">{{ Session::get('message') }}</p> -->
+                              <div class="alert alert-info" role="alert">
+                                Your account is not activated ! Please activate your account. <a href="">Click here</a> to resend activation link
+                              </div>
+                            @endif
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                               <input type="text" class="form-control" name="email" placeholder="yourname@yourdomain.com" required="" autofocus value="{{ old('email') }}"/>
+                               @if ($errors->has('email'))
+                               <span class="help-block">
+                                  <strong>{{ $errors->first('email') }}</strong>
+                               </span>
+                               @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                               <input type="password" class="form-control" name="password" placeholder="Enter your password" required="" />
+                               @if ($errors->has('password'))
+                               <span class="help-block">
+                                  <strong>{{ $errors->first('password') }}</strong>
+                               </span>
+                               @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Confirm Password</label>
+                               <input type="password" class="form-control" name="password_confirmation" placeholder="Enter your password" required="" />
+                               @if ($errors->has('password_confirmation'))
+                               <span class="help-block">
+                                  <strong>{{ $errors->first('password_confirmation') }}</strong>
+                               </span>
+                               @endif
+                            </div>
+
+                           
+
+                            <div>
+                               <button class="btn btn-primary btn-login submit btn-sm pull-left form-control" style="margin-top: 5px;">Sign Up</button>
+                            </div>
+
+                        </form>
+
+                        <div class="clearfix"></div>
+                        <div class="separator">
+                            <p class="change_link">Already have Account?
+                                <a href="{{ route('login') }}" class="to_register"> Login here </a>
+                            </p>
+                            <div class="clearfix"></div>
+                            <br />
+
+                        </div>
+                        <p class="info">Your data will not be used outside of digizigs. By signing up you agree that your statistics may be used anonymously inside www.digizigs.com.</p>
+
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="mg-b-0-f">Password *</label>
-                    <input type="password" class="form-control  @error('password') is-invalid @enderror" placeholder="Enter your password" name="password" value="{{ old('password') }}">
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label class="mg-b-0-f">Confirm Password *</label>
-                    <input type="password" class="form-control  @error('password') is-invalid @enderror" placeholder="Confirm your password" name="password_confirmation" value="{{ old('password') }}">
-                    @error('password_confirmation')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label>Firstname</label>
-                    <input type="text" class="form-control @error('firstname') is-invalid @enderror" placeholder="Enter your firstname" name="firstname" value="{{ old('firstname') }}">
-                    @error('firstname')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label>Lastname</label>
-                    <input type="text" class="form-control @error('lastname') is-invalid @enderror" placeholder="Enter your lastname" name="lastname" value="{{ old('lastname') }}">
-                    @error('lastname')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <div class="form-group tx-12">
-                    By clicking <strong>Create an account</strong> below, you agree to our terms of service and privacy statement.
-                </div><!-- form-group -->
-
-                <button class="btn btn-brand-02 btn-block">Create Account</button>
-            </form>
-
-            <div class="tx-13 mg-t-20 tx-center">Already have an account? <a href="{{route('login')}}">Sign In</a></div>
-
+            </div>
         </div>
-        </div><!-- sign-wrapper -->
-        <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
-        <div class="mx-lg-wd-500 mx-xl-wd-550">
-            <img src="https://via.placeholder.com/1280x1225" class="img-fluid" alt="">
-        </div>
-        </div><!-- media-body -->
-    </div><!-- media -->
     </div>
 @endsection

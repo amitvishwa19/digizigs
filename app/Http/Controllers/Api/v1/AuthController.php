@@ -13,17 +13,20 @@ class AuthController extends Controller
     {
         $register = $request->validate([
             'email'=>'required|email|unique:users',
-            'password'=>'required|confirmed'
+            'password'=>'required'
         ]);
         $register['password'] = bcrypt($request->password);
         $user = User::create($register);
-        $accessToken = $user->createToken('authToken')->accessToken;
-        return response(['user' => $user ,'token' => $accessToken]);
+        $token = auth()->login($user);
+
+        //$accessToken = $user->createToken('authToken')->accessToken;
+        return response(['user' => $user ,'token' => $token]);
     }
 
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
+
         if ($token = $this->guard()->attempt($credentials)) {
             $user = auth()->user();
             //return $this->respondWithToken($token);

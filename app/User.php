@@ -22,7 +22,7 @@ class User extends Authenticatable implements JWTSubject
     protected static $logUnguarded = true;
 
     protected $fillable = [
-        'firstname','lastname', 'username', 'email', 'password',
+        'firstname','lastname', 'username', 'email', 'password' ,'verifyToken',
     ];
 
     protected $hidden = [

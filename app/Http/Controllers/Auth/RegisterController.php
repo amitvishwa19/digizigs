@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\Mail\VerifyEmail;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -49,8 +52,6 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,11 +65,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
+        $user = User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'verifyToken' => Str::random(40),
         ]);
+        $user = User::findOrFail($user->id);
+        $this->sendVerificationEmail($user);
+        return $user;
+    }
+
+    protected function sendVerificationEmail($user)
+    {
+        Mail::to('lms@digizigs.com')->send(new VerifyEmail($user));
+    }
+
+    protected function verifyemail($email,$token)
+    {
+        $user = User::where(['email'=>$email,'verifyToken'=>$token])->first();
+        if($user){
+            User::where(['email'=>$email,'verifyToken'=>$token])->update(['status'=>'1','verifyToken'=>null]);
+        }
+        return redirect('/login')->with('message','Congratulations ! you have successfully activated your account,Login to continue');
+
     }
 }

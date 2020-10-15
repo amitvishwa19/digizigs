@@ -10,6 +10,26 @@ class ClientController extends Controller
     public function home()
     {
 
-        return "Home";
+        return view('client.pages.home');
     }
+
+    public function blogs()
+    {
+  
+        return view('client.pages.blogs');
+    }
+
+    public function about()
+    {
+  
+        return view('client.pages.about');
+    }
+
+    public function contact()
+    {
+  
+        return view('client.pages.contact');
+    }
+
+
 }

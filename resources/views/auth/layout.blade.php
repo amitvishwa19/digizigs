@@ -11,9 +11,9 @@
     <meta name="author" content="Digizigs">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicon.png">
+    <link rel="icon" href="{{setting('app.fevicon')}}" type="image/ico" />
 
-    <title>Digizigs | Login</title>
+    <title>Digizigs | @yield('title')</title>
 
     <!-- vendor css -->
     <link href="{{asset('public/admin/lib/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
