@@ -22,7 +22,7 @@ class PostController extends Controller
     {  
         if ($request->ajax()) {
            //$posts = Post::orderby('created_at','asc')->with('author','categories')->latest('id');
-            $posts = auth()->user()->posts()->with('author','categories')->latest()->get();
+            $posts = auth()->user()->posts()->with('author','categories')->latest('id');
 
             return Datatables::of($posts)
                 ->editColumn('created_at',function(Post $post){
@@ -137,10 +137,11 @@ class PostController extends Controller
 
 
         return redirect() ->route('post.index')
-        ->with([
-           'message'    =>'Post Created Successfully',
-           'alert-type' => 'success',
-      ]);
+            ->with([
+            'message'    =>'Post Created Successfully',
+            'alert-type' => 'success',
+        ]);
+
 
     }
 

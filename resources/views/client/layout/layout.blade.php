@@ -21,6 +21,8 @@
 
         @include('client.partials.footer')
 
+        @include('client.partials.consent')
+
     </div>
     <!--End pagewrapper-->
 

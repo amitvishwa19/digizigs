@@ -15,6 +15,8 @@
 
    @include('client.partials.about')
 
+   @include('client.partials.service')
+
    @include('client.partials.trusted')
 
    @include('client.partials.parallex')

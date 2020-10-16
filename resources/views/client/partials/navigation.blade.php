@@ -7,7 +7,7 @@
            <!--Logo-->
            <div class="logo-box">
                <div class="logo">
-                   <a href="index-2.html" title="Linoor - DIgital Agency HTML Template">
+                   <a href="{{route('app.home')}}" title="Linoor - DIgital Agency HTML Template">
                        <img src="{{setting('app.logo')}}" id="thm-logo" alt="Digizigs Technologies Light" title="Linoor - DIgital Agency HTML Template">
                    </a>
                </div>

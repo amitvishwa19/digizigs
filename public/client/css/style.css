@@ -56,6 +56,7 @@
 51.	Leave Comments Form
 52.	Service Details
 53.	Service Details
+54. Consent section
 --------------------------------------------------------------*/
 
 /*
@@ -3926,6 +3927,7 @@ img.lazy-image.loaded {
   padding: 0px 0px 70px;
   background: none;
   z-index: 2;
+  margin-top: 180px;
 }
 
 .trusted-section .outer-container {
@@ -5386,7 +5388,7 @@ img.lazy-image.loaded {
   line-height: 1.5em;
   font-size: 18px;
   letter-spacing: 0.1em;
-  margin: 25px 0 0;
+  margin: 10px 0 0;
 }
 
 .main-footer .newsletter-form {
@@ -9860,3 +9862,25 @@ img.lazy-image.loaded {
 .skiptranslate {
   display: none !important;
 }
+
+
+/***
+
+====================================================================
+54.	Consent Section
+====================================================================
+
+ ***/
+
+ .consent-banner{
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   background:  var(--thm-base);
+ }
+
+ .cookie-banner .container{
+   margin:0 auto;
+   width: 70%;
+    text-align: center;
+ }

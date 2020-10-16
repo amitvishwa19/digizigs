@@ -51,6 +51,11 @@ class Handler extends ExceptionHandler
         //     return response()->json(['error'=>'Bad Request'],400);
         // }
 
+        if($exception instanceOf Guzzle\Http\Exception){
+            
+            return 'Guzzle http exception';
+        }
+
         return parent::render($request, $exception);
     }
 }

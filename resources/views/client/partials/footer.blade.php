@@ -33,20 +33,11 @@
                                <div class="col-md-6 col-sm-12">
                                    <ul>
                                        <li><a href="#">About</a></li>
-                                       <li><a href="#">Meet Our Team</a></li>
-                                       <li><a href="#">Our Portfolio</a></li>
                                        <li><a href="#">Latest News</a></li>
                                        <li><a href="#">Contact</a></li>
                                    </ul>
                                </div>
-                               <div class="col-md-6 col-sm-12">
-                                   <ul>
-                                       <li><a href="#">Support</a></li>
-                                       <li><a href="#">Privacy Policy</a></li>
-                                       <li><a href="#">Terms of Use</a></li>
-                                       <li><a href="#">Help</a></li>
-                                   </ul>
-                               </div>
+                               
                            </div>
                        </div>
                    </div>
@@ -58,8 +49,7 @@
                        <div class="widget-content">
                            <h6>Contact</h6>
                            <ul class="contact-info">
-                               <li class="address"><span class="icon flaticon-pin-1"></span> 66 Broklyn Street,
-                                   New York <br>United States of America</li>
+                               <li class="address"><span class="icon flaticon-pin-1"></span> Vadodara <br>India</li>
                                <li><span class="icon flaticon-call"></span><a href="tel:9712340450">+91 9712340450</a></li>
                                <li><span class="icon flaticon-email-2"></span>
                                    <a href="mailto:info@digizigs.com">info@digizigs.com</a>
@@ -74,18 +64,28 @@
                    <div class="footer-widget newsletter-widget">
                        <div class="widget-content">
                            <h6>Newsletter</h6>
-                           <div class="newsletter-form">
-                               <form method="post" action="http://layerdrops.com/linoorhtml/contact.html">
-                                   <div class="form-group clearfix">
-                                       <input type="email" name="email" value="" placeholder="Email Address"
-                                           required="">
-                                       <button type="submit" class="theme-btn"><span
-                                               class="fa fa-envelope"></span></button>
-                                   </div>
-                               </form>
-                           </div>
-                           <div class="text">Sign up for our latest news & articles. We won’t give you spam
-                               mails.</div>
+
+                           @if(!Request::cookie('subscription'))
+                            <div class="newsletter-form">
+                                <form method="post" action="{{route('app.subscribe')}}">
+                                    @csrf
+                                    <div class="form-group clearfix">
+                                        <input type="email" name="email" value="" placeholder="Email Address" required="">
+                                        <button type="submit" class="theme-btn">
+                                        <span class="fa fa-envelope"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                           @endif
+                            <div class="text">
+                                @if(Request::cookie('subscription'))
+                                    You are subscribed to our newsletter,we will send you updates via mail
+                                @else
+                                    Sign up for our latest news & articles. We won’t give you spam mails.
+                                @endif
+                               
+                            </div>
                        </div>
                    </div>
                </div>

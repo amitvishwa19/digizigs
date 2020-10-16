@@ -28,7 +28,7 @@ class PostPublishSlackNotification extends Notification
 
     public function toSlack($notifiable)
     {
-        $url = url('/exceptions/'. ' dadasdadas');
+        //$url = url('/exceptions/'. ' dadasdadas');
         // return (new SlackMessage)
         //     ->success()
         //     ->content('New Post published by ' . auth()->user()->firstname . '' . auth()->user()->lastname)
@@ -37,13 +37,21 @@ class PostPublishSlackNotification extends Notification
         //                     ->content('Description :: ' . $this->post->description);
         //     });
 
-        return (new SlackMessage)
+       
+
+        try{
+            
+            return (new SlackMessage)
             ->success()
             ->content('New Post published by ' . auth()->user()->firstname . '' . auth()->user()->lastname)
             ->attachment(function ($attachment){
                 $attachment->title('Title :: ' . $this->post->title)
                             ->content('Description :: ' . $this->post->description);
             });
+
+        }catch (Throwable $e){
+
+        }
 
     }
 

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Http\Controllers\Controller;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
 
 class ClientController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
-
+        //$value = $request->cookie('subscription');
+        //dd(request()->cookie() );
         return view('client.pages.home');
     }
 
@@ -29,6 +32,21 @@ class ClientController extends Controller
     {
   
         return view('client.pages.contact');
+    }
+
+    public function subscribe(Request $request)
+    {
+        $subscription = New Subscription;
+        $subscription->email = $request->email;
+        $subscription->save();
+
+        //$response = new Response('Hello world');
+        //$response->withCookie(cookie('subscription','subscription',10));
+
+        
+
+
+        return redirect() ->route('app.home')->withCookie(cookie('subscription','subscription',10));
     }
 
 

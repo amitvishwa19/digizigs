@@ -32,7 +32,6 @@
       </div>
     </div>
 
-    @include('admin.partials.alerts')
 
     <div class="rows row-lgs">
 
@@ -42,10 +41,12 @@
         <!--Title-->
         <div class="form-group">
           <label for="formGroupExampleInput" class="d-block">Post Title</label>
-          <input type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
-            @if ($errors->has('title'))
-              <small class="error-highlighter">{{ $errors->first('title') }}</small>
-            @endif
+          <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autofocus>
+            @error('title')
+                <span class="" role="alert">
+                <strong><i>{{ $message }}</i></strong>
+                </span>
+            @enderror
         </div>
 
         <!--Description-->
