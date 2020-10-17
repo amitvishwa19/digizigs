@@ -29,8 +29,8 @@ class UserSeed extends Seeder
                 'mobile' => '0000000000',
                 'type' => 'user',
                 'password' => bcrypt('password'),
-                'api_token' => hash('sha256', Str::random(60)),
-                'verify_token' => Str::random(60),
+                'apiToken' => hash('sha256', Str::random(60)),
+                'verifyToken' => Str::random(60),
             ]
         );
         $superAdmin->assignRole('Super Admin');
@@ -45,8 +45,8 @@ class UserSeed extends Seeder
                 'type' => 'user',
                 'mobile' => '0000000000',
                 'password' => bcrypt('password'),
-                'api_token' => hash('sha256', Str::random(60)),
-                'verify_token' => Str::random(60),
+                'apiToken' => hash('sha256', Str::random(60)),
+                'verifyToken' => Str::random(60),
             ]
         );
         $profile = Profile::create(['user_id' => $user->id]);
@@ -64,8 +64,8 @@ class UserSeed extends Seeder
                 'mobile' => '0000000000',
                 'type' => 'student',
                 'password' => bcrypt('password'),
-                'api_token' => hash('sha256',Str::random(60)),
-                'verify_token' => Str::random(60),
+                'apiToken' => hash('sha256',Str::random(60)),
+                'verifyToken' => Str::random(60),
             ]);
             $student->assignRole('student');
             $profile = Profile::create(['user_id' => $student->id]);
@@ -79,8 +79,8 @@ class UserSeed extends Seeder
                 'mobile' => '0000000000',
                 'type' => 'teacher',
                 'password' => bcrypt('password'),
-                'api_token' => hash('sha256',Str::random(60)),
-                'verify_token' => Str::random(60),
+                'apiToken' => hash('sha256',Str::random(60)),
+                'verifyToken' => Str::random(60),
             ]);
             $teacher->assignRole('teacher');
             $profile = Profile::create(['user_id' => $teacher->id]);
