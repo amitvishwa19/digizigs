@@ -89,7 +89,7 @@
  ***/
 
 :root {
-  --thm-font: "Montserrat", sans-serif;
+  --thm-font: "Nunito", sans-serif;
   --thm-base: #E45447;
   --thm-base: #ffaa17;
   --thm-base-rgb: 255, 170, 23;
@@ -8670,7 +8670,7 @@ img.lazy-image.loaded {
   font-weight: 300;
   margin: 0;
   letter-spacing: 0.07em;
-  
+
 }
 
 .sidebar .recent-posts .text a {
@@ -9877,10 +9877,23 @@ img.lazy-image.loaded {
    bottom: 0;
    width: 100%;
    background:  var(--thm-base);
+   z-index: 9000;
+   text-align: center;
+   margin:0 auto;
+   padding: 20px 20px 5px 20px;
+   font-size: 16px;
+   font-weight: 500;
+ }
+
+ .consent-banner a{
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 5px 10px;
  }
 
  .cookie-banner .container{
    margin:0 auto;
    width: 70%;
-    text-align: center;
+
  }

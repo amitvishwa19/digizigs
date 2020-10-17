@@ -19,7 +19,7 @@ class PostController extends Controller
 {
 
     public function index(Request $request)
-    {  
+    {
         if ($request->ajax()) {
            //$posts = Post::orderby('created_at','asc')->with('author','categories')->latest('id');
             $posts = auth()->user()->posts()->with('author','categories')->latest('id');
@@ -182,7 +182,7 @@ class PostController extends Controller
         if($file = $request->file('feature_image')){
             $post->image_url = uploadImage($request->file('feature_image'));
         }
-        
+
 
         $post->save();
 

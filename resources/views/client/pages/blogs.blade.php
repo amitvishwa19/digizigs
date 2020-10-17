@@ -9,7 +9,7 @@
 
 
 @section('content')
-	
+
 	<!-- Banner Section -->
 	<section class="page-banner">
 		<div class="image-layer" style="background-image:url({{asset('public/client/images/background/image-7.jpg')}});"></div>
@@ -39,11 +39,38 @@
 				  <div class="content-side col-lg-8 col-md-12 col-sm-12">
 						<div class="blog-posts">
 
-							 <!--News Block-->
+                            @foreach($posts as $post)
+
+                                <!--News Block-->
+                                <div class="news-block-two">
+                                    <div class="inner-box">
+                                        <div class="image-box">
+                                            <a href="{{route('app.blog',$post->slug)}}"><img src="{{$post->image_url}}" alt=""></a>
+                                        </div>
+                                        <div class="lower-box">
+                                            <div class="post-meta">
+                                                    <ul class="clearfix">
+                                                        <li><span class="far fa-clock"></span> 20 Mar</li>
+                                                        <li><span class="far fa-user-circle"></span> Admin</li>
+                                                        <li><span class="far fa-comments"></span> 2 Comments</li>
+                                                    </ul>
+                                            </div>
+                                            <h4><a href="{{route('app.blog',$post->slug)}}">{{$post->title}}</a>
+                                            </h4>
+                                            <div class="text">{!!str_limit($post->body,400)!!}</div>
+                                            <div class="link-box"><a class="theme-btn" href="blog-single.html">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            @endforeach
+
+							 {{-- <!--News Block-->
 							 <div class="news-block-two">
 								  <div class="inner-box">
 										<div class="image-box">
-											 <a href="blog-single.html"><img src="{{asset('public/client/images/resource/news-7.jpg')}}" alt=""></a>
+											 <a href="{{route('app.blog',$post->slug)}}"><img src="{{asset('public/client/images/resource/news-7.jpg')}}" alt=""></a>
 										</div>
 										<div class="lower-box">
 											 <div class="post-meta">
@@ -53,7 +80,7 @@
 														<li><span class="far fa-comments"></span> 2 Comments</li>
 												  </ul>
 											 </div>
-											 <h4><a href="blog-single.html">basic rules of running web agency business</a>
+											 <h4><a href="{{route('app.blog',$post->slug)}}">basic rules of running web agency business</a>
 											 </h4>
 											 <div class="text">There are many variations of passages of Lorem Ipsum
 												  available, but the majority have suffered alteration in some form, by
@@ -69,7 +96,7 @@
 							 <div class="news-block-two">
 								  <div class="inner-box">
 										<div class="image-box">
-											 <a href="blog-single.html"><img src="{{asset('public/client/images/resource/news-8.jpg')}}" alt=""></a>
+											 <a href="{{route('app.blog',$post->slug)}}"><img src="{{asset('public/client/images/resource/news-8.jpg')}}" alt=""></a>
 											 <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ"
 												  class="vid-link lightbox-image">
 												  <div class="icon"><span class="flaticon-play-button-1"></span></div>
@@ -83,7 +110,7 @@
 														<li><span class="far fa-comments"></span> 2 Comments</li>
 												  </ul>
 											 </div>
-											 <h4><a href="blog-single.html">Delivering the best digital marketing</a></h4>
+											 <h4><a href="{{route('app.blog',$post->slug)}}">Delivering the best digital marketing</a></h4>
 											 <div class="text">There are many variations of passages of Lorem Ipsum
 												  available, but the majority have suffered alteration in some form, by
 												  injected humour, or randomised words which don't look even slightly
@@ -93,11 +120,11 @@
 										</div>
 								  </div>
 							 </div>
-							 
+
 							 <!--News Block-->
 							 <div class="news-block-two">
 								  <div class="inner-box">
-										
+
 										<div class="lower-box">
 											 <div class="post-meta">
 												  <ul class="clearfix">
@@ -106,7 +133,7 @@
 														<li><span class="far fa-comments"></span> 2 Comments</li>
 												  </ul>
 											 </div>
-											 <h4><a href="blog-single.html">Introducing the latest linoor features</a></h4>
+											 <h4><a href="{{route('app.blog',$post->slug)}}">Introducing the latest linoor features</a></h4>
 											 <div class="text">There are many variations of passages of Lorem Ipsum
 												  available, but the majority have suffered alteration in some form, by
 												  injected humour, or randomised words which don't look even slightly
@@ -116,7 +143,7 @@
 										</div>
 								  </div>
 							 </div>
-							 
+
 							 <!--News Block-->
 							 <div class="news-block-three">
 								  <div class="inner-box">
@@ -125,7 +152,7 @@
 											 have alteration in some by inject humour or random words. There are many
 											 variations of passages of Lorem Ipsum available, but the majority have suffered
 											 alteration.</div>
-										<a href="blog-single.html" class="over-link"></a>
+										<a href="{{route('app.blog',$post->slug)}}" class="over-link"></a>
 								  </div>
 							 </div>
 
@@ -134,9 +161,9 @@
 								  <div class="inner-box">
 										<div class="link-icon"><span class="flaticon-link-2"></span></div>
 										<h4><a href="blog-single.html">Delivering the best digital marketing</a></h4>
-										<a href="blog-single.html" class="over-link"></a>
+										<a href="{{route('app.blog')}}" class="over-link"></a>
 								  </div>
-							 </div>
+							 </div> --}}
 
 						</div>
 						<div class="more-box">
@@ -150,7 +177,7 @@
 				  <!--Sidebar Side-->
 				  <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
 						<aside class="sidebar blog-sidebar">
-							 
+
 							 <div class="sidebar-widget recent-posts">
 								  <div class="widget-inner">
 										<div class="sidebar-title">
@@ -253,9 +280,9 @@
 			 </div>
 		</div>
   	</div>
-	  
+
 	@include('client.partials.action')
-	    
+
 @endsection
 
 
@@ -264,15 +291,15 @@
 
 
 @section('javascript')
-   
-	
+
+
   	<script>
   		$(function(){
          'use strict'
 
-         
 
-         
+
+
 
       });
   	</script>

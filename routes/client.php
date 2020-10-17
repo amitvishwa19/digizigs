@@ -16,6 +16,11 @@ Route::get('/blogs',[
    'as' =>'app.blogs'
 ]);
 
+Route::get('/blog/{slug}',[
+    'uses' => 'Client\ClientController@blog',
+    'as' =>'app.blog'
+ ]);
+
 Route::get('/contact',[
    'uses' => 'Client\ClientController@contact',
    'as' =>'app.contact'
@@ -25,3 +30,8 @@ Route::get('/about',[
    'uses' => 'Client\ClientController@about',
    'as' =>'app.about'
 ]);
+
+Route::get('/cookie_consent',[
+    'uses' => 'Client\ClientController@cookie_consent',
+    'as' =>'app.cookie.consent'
+ ]);

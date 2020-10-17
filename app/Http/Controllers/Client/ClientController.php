@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Models\Post;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -18,19 +19,25 @@ class ClientController extends Controller
 
     public function blogs()
     {
-  
-        return view('client.pages.blogs');
+        $posts = Post::where('status','published')->get();
+        return view('client.pages.blogs',compact('posts'));
+    }
+
+    public function blog()
+    {
+
+        return view('client.pages.blog');
     }
 
     public function about()
     {
-  
+
         return view('client.pages.about');
     }
 
     public function contact()
     {
-  
+
         return view('client.pages.contact');
     }
 
@@ -43,10 +50,15 @@ class ClientController extends Controller
         //$response = new Response('Hello world');
         //$response->withCookie(cookie('subscription','subscription',10));
 
-        
+
 
 
         return redirect() ->route('app.home')->withCookie(cookie('subscription','subscription',10));
+    }
+
+    public function cookie_consent()
+    {
+        return redirect()->back()->withCookie(cookie('cookie_consent','cookie_consent',(365 * 24 * 60)));
     }
 
 

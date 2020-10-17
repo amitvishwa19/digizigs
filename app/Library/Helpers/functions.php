@@ -1,9 +1,10 @@
 <?php
 
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -69,8 +70,7 @@ if(! function_exists('uploadImage')){
         // $img->save(public_path('uploads').'/'.$image_name);
         // return url('public/uploads/'. $image_name) ;
         $image->storeAs($path, $image_name, 'public');
-        $url = $path .'/'. $image_name;
-        return $url;
+        return url('public/' . Storage::url($path .'/'. $image_name));
     }
 }
 

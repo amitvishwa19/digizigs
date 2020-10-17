@@ -7,7 +7,7 @@
 
     <div class="page-wrapper">
 
-     
+
         <!-- Preloader -->
         <div class="preloader">
             <div class="icon" style="background-image: {{setting('app.logo')}}"></div>
@@ -21,7 +21,9 @@
 
         @include('client.partials.footer')
 
-        @include('client.partials.consent')
+        @if(!Request::cookie('cookie_consent'))
+            @include('client.partials.consent')
+        @endif
 
     </div>
     <!--End pagewrapper-->
@@ -29,7 +31,7 @@
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
     @include('client.partials.scripts')
-    
+
 </body>
 
 
