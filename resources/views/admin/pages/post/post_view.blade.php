@@ -6,15 +6,15 @@
 
 @section('style')
 
- 
+
 
 @endsection
 
 
 @section('content')
-  
+
 <div class="content-body " id="contentbody">
-    
+
   <div class="card">
 
    <div class="d-sm-flex align-items-right justify-content-between mg-b-5 mg-lg-b-5 mg-xl-b-5">
@@ -26,12 +26,12 @@
             <li class="breadcrumb-item active" aria-current="page">Post</li>
           </ol>
         </nav>
-      </div> 
+      </div>
    </div>
-    
+
    @include('admin.partials.alerts')
 
-    
+
 
    <div class="">
 
@@ -41,8 +41,13 @@
             <a href="{{route('post.index')}}" class="btn btn-dark btn-xs mg-l-10">Cancel</a>
       </div>
       <small><b>Created by:</b> <a href="">{{$post->author->firstname}},{{$post->author->lastname}}</a> <b>at:</b> {{$post->created_at->diffForHumans()}}</small>
-        
-      <div class="mg-t-20">  
+
+      <div class="mg-t-20">
+
+        <div id="" class="mg-t-20 mg-b-40 img-thumbnail">
+            <img src="{{$post->image_url}}" alt="">
+        </div>
+
          <div>
             <h5>Title</h5>
             <p>{{$post->title}}</p>
@@ -51,10 +56,10 @@
          <div>
             <h5>Post Body</h5>
             <p>{!! $post->body !!}</p>
-         </div>                                          
+         </div>
       </div>
     </div><!-- row -->
-  
+
   </div>
 
 </div>
@@ -63,20 +68,20 @@
 
 
 @section('modal')
-  
+
 @endsection
 
 
 @section('javascript')
 
-  
+
   <script>
     $(function(){
         'use strict'
 
-        
-        
-        
+
+
+
 
     });
   </script>

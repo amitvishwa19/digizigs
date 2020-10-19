@@ -39,121 +39,134 @@
     <div class="rows row-lgs">
 
 
-       <form method="post" action="{{route('post.update', $post->id)}}" enctype="multipart/form-data">
-          @csrf
-          {{method_field('PUT')}}
+       	<form method="post" action="{{route('post.update', $post->id)}}" enctype="multipart/form-data">
+            @csrf
+            {{method_field('PUT')}}
 
-          <!--Title-->
-          <div class="form-group">
-            <label for="formGroupExampleInput" class="d-block">Post Title</label>
-            <input type="text" class="form-control" name="title" value="{{$post->title}}{{ old('title') }}" autofocus>
-              @if ($errors->has('title'))
-                <small class="error-highlighter">{{ $errors->first('title') }}</small>
-              @endif
-          </div>
+            <div class="row">
 
-          <!--Description-->
-          <div class="form-group">
-            <label for="formGroupExampleInput2" class="d-block">Post Description</label>
-            <input type="text" class="form-control" name="description" value="{{$post->description}}{{ old('description') }}">
-          </div>
+                <div class="col-md-9">
 
-          <!--Body-->
-          <div class="form-group">
-            <label for="formGroupExampleInput2" class="d-block">Post Body</label>
-            <div id="post-body" class="ht-200 mg-b-25 form-group" style="background-color: #fff;margin-bottom: 20px;height: 400px;">
+                     <!--Title-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="d-block"><b>Post Title</b></label>
+                        <input type="text" class="form-control" name="title" value="{{$post->title}}{{ old('title') }}" autofocus>
+                        @if ($errors->has('title'))
+                            <small class="error-highlighter">{{ $errors->first('title') }}</small>
+                        @endif
+                    </div>
+
+                    <!--Description-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class="d-block"><b>Post Description</b></label>
+                        <input type="text" class="form-control" name="description" value="{{$post->description}}{{ old('description') }}">
+                    </div>
+
+                    <!--Body-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class="d-block"><b>Post Body</b></label>
+                        <div id="post-body" class="ht-200 mg-b-25 form-group" style="background-color: #fff;margin-bottom: 20px;height: 400px;">
+                        </div>
+                        <input type="text" name="body" style="display: none" id="bodyinput" value="{{$post->body}}{{ old('body') }}">
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-md-3">
+                    <!--Post status-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class="d-block"><b>Post Status</b></label>
+                        <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1" name="status" @if($post->status == 'published') checked  @endif>
+                        <label class="custom-control-label" for="customSwitch1" id="pstatuslbl"> @if($post->status == 'published') Publish @else Draft  @endif </label>
+                        </div>
+                    </div>
+
+                    <!--Post category-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class="d-block" style="font-weight:600"><b>Category</b></label>
+                        <div data-label="Example" class="">
+                            <select class="form-control select2" multiple="multiple" name="categories[]" multiple="">
+                            <option label="Choose one"></option>
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}"
+                                    @foreach($post->categories as $postCat)
+                                    @if($postCat->id == $category->id)
+                                        selected
+                                    @endif
+                                    @endforeach
+                                    >{{$category->name}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div><!-- df-example -->
+                    </div>
+
+                    <!--Post Tag-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class="d-block" style="font-weight:600"><b>Tags</b></label>
+                        <div data-label="Example" class="df-example demo-forms">
+                        <select type="text" class="form-control" value="" data-role="tagsinput" multiple="" name="tags[]" value="{{ old('tags[]') }}">
+                            @foreach($post->tags as $tag)
+                            <option value="{{$tag->name}}"
+
+                            >{{$tag->name}}</option>
+                            @endforeach
+                        </select>
+                        </div><!-- df-example -->
+                    </div>
+
+                    <!--Feature Image-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class="d-block"><b>Feature Image</b></label>
+                        <div class="wpinput">
+                        <input type="file" class="" id="imageUpload" name="feature_image" value="{{$post->image_url}}">
+                        </div>
+                        <div id="" class="mg-t-20 avatar-preview img-thumbnail" @if($post->image_url) style="
+                        display:block;
+                        background-image:url({{ $post->image_url }});
+                        " @else style="display:none"  @endif></div>
+                        <div class="remove-image" @if($post->image_url) style="display:block;cursor:pointer;" @endif><b>Remove image</b></div>
+                    </div>
+
+                    <!--Notification-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class="d-block"><b>Notifications</b></label>
+                        <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="notify">
+                        <label class="custom-control-label" for="customCheck">Send notifications to subscribers</label>
+                        </div>
+                    </div>
+
+                    <!--Social posts-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class="d-block"><b>Social Publish</b></label>
+                        <div class="custom-control custom-checkbox d-flex">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="fb_publish">
+                        <label class="custom-control-label" for="customCheck1">Facebook</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2" name="twitter_publish">
+                        <label class="custom-control-label" for="customCheck2">Twitter</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-sm-flex">
+                        <input type="checkbox" class="custom-control-input" id="customCheck3" name="insta_publish">
+                        <label class="custom-control-label" for="customCheck3">Instagram</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck4" name="linked_publish">
+                        <label class="custom-control-label" for="customCheck4">LinkedIn</label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <input type="text" name="body" style="display: none" id="bodyinput" value="{{$post->body}}{{ old('body') }}">
-          </div>
 
-          <!--Post status-->
-          <div class="form-group">
-            <label for="formGroupExampleInput2" class="d-block">Post Status</label>
-            <div class="custom-control custom-switch">
-              <input type="checkbox" class="custom-control-input" id="customSwitch1" name="status" @if($post->status == 'published') checked  @endif>
-              <label class="custom-control-label" for="customSwitch1" id="pstatuslbl"> @if($post->status == 'published') Publish @else Draft  @endif </label>
-            </div>
-          </div>
 
-          <!--Post category-->
-          <div class="form-group">
-            <label for="formGroupExampleInput2" class="d-block" style="font-weight:600">Category</label>
-            <div data-label="Example" class="">
-                <select class="form-control select2" multiple="multiple" name="categories[]" multiple="">
-                  <option label="Choose one"></option>
-                    @foreach($categories as $category)
-                      <option value="{{$category->id}}"
-                        @foreach($post->categories as $postCat)
-                          @if($postCat->id == $category->id)
-                            selected
-                          @endif
-                        @endforeach
-                        >{{$category->name}}
-                      </option>
-                    @endforeach
-                </select>
-            </div><!-- df-example -->
-          </div>
-
-          <!--Post Tag-->
-          <div class="form-group">
-            <label for="formGroupExampleInput2" class="d-block" style="font-weight:600">Tags</label>
-            <div data-label="Example" class="df-example demo-forms">
-              <select type="text" class="form-control" value="" data-role="tagsinput" multiple="" name="tags[]" value="{{ old('tags[]') }}">
-                @foreach($post->tags as $tag)
-                  <option value="{{$tag->name}}"
-
-                  >{{$tag->name}}</option>
-                @endforeach
-              </select>
-            </div><!-- df-example -->
-          </div>
-
-          <!--Feature Image-->
-          <div class="form-group">
-            <label for="formGroupExampleInput2" class="d-block">Feature Image</label>
-            <div class="wpinput">
-              <input type="file" class="" id="imageUpload" name="feature_image" value="{{$post->image_url}}">
-            </div>
-            <div id="" class="mg-t-20 avatar-preview img-thumbnail" @if($post->image_url) style="
-              display:block;
-              background-image:url({{ asset('public/storage/uploads/images/'. $post->image_url) }});
-              " @else style="display:none"  @endif></div>
-            <div class="remove-image" @if($post->image_url) style="display:block;cursor:pointer;" @endif><b>Remove image</b></div>
-          </div>
-
-          <!--Notification-->
-          <div class="form-group">
-            <label for="formGroupExampleInput2" class="d-block">Notifications</label>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck" name="notify">
-              <label class="custom-control-label" for="customCheck">Send notifications to subscribers</label>
-            </div>
-          </div>
-
-          <!--Social posts-->
-          <div class="form-group">
-            <label for="formGroupExampleInput2" class="d-block">Social Publish</label>
-            <div class="custom-control custom-checkbox d-flex">
-              <input type="checkbox" class="custom-control-input" id="customCheck1" name="fb_publish">
-              <label class="custom-control-label" for="customCheck1">Facebook</label>
-            </div>
-            <div class="custom-control custom-checkbox d-flex">
-              <input type="checkbox" class="custom-control-input" id="customCheck2" name="twitter_publish">
-              <label class="custom-control-label" for="customCheck2">Twitter</label>
-            </div>
-            <div class="custom-control custom-checkbox d-sm-flex">
-              <input type="checkbox" class="custom-control-input" id="customCheck3" name="insta_publish">
-              <label class="custom-control-label" for="customCheck3">Instagram</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck4" name="linked_publish">
-              <label class="custom-control-label" for="customCheck4">LinkedIn</label>
-            </div>
-          </div>
-
-          <button class="btn btn-primary btn-xs mg-t-20" type="submit" id="btnpublish">Save Draft</button>
-          <a href="{{route('post.index')}}"  class="btn btn-dark btn-xs mg-t-20">Cancel</a>
+            <button class="btn btn-primary btn-xs mg-t-20" type="submit" id="btnpublish">Save Draft</button>
+            <a href="{{route('post.index')}}"  class="btn btn-dark btn-xs mg-t-20">Cancel</a>
 
         </form>
 

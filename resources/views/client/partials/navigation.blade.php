@@ -19,8 +19,10 @@
                    <span class="txt">Menu</span>
                </div>
 
+               {{menu('Header Menu','client.partials.header_menu')}}
+
                <!-- Main Menu -->
-               <nav class="main-menu navbar-expand-md navbar-light">
+               {{-- <nav class="main-menu navbar-expand-md navbar-light">
                    <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                        <ul class="navigation clearfix">
 
@@ -29,8 +31,8 @@
                            </li>
 
                            <li><a href="{{route('app.about')}}">About Us</a></li>
-                           
-                           {{-- <li class="dropdown"><a href="services.html">Services</a>
+
+                           <li class="dropdown"><a href="services.html">Services</a>
                                <ul>
                                    <li><a href="services.html">All Services</a></li>
                                    <li><a href="web-development.html">Website Development</a></li>
@@ -40,17 +42,17 @@
                                    <li><a href="app-development.html">App Development</a></li>
                                    <li><a href="ui-designing.html">UI/UX Designing</a></li>
                                </ul>
-                           </li> --}}
-                           
-                           <li class="dropdown">
-                               <a href="{{route('app.blogs')}}">Blog</a>
                            </li>
 
-                           <li><a href="{{route('app.contact')}}">Contact</a></li>
+                           <li class=" dropdown">
+                               <a href="">Blog</a>
+                           </li>
+
+                           <li><a href="">Contact</a></li>
 
                        </ul>
                    </div>
-               </nav>
+               </nav> --}}
            </div>
 
            <div class="other-links clearfix">
@@ -70,7 +72,7 @@
                        </a>
                    </div>
                </div>
-              
+
            </div>
 
        </div>
