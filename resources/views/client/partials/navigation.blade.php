@@ -1,5 +1,5 @@
 <!-- Main Header -->
-<header class="main-header header-style-one">
+<header class="main-header header-style-one ">
 
    <!-- Header Upper -->
    <div class="header-upper">

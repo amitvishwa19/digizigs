@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\Traits\CausesActivity;
@@ -13,7 +14,7 @@ class Post extends Model
     protected static $logUnguarded = true;
 
 
-    
+
     protected $guarded = ['id'];
 
     public function author()
@@ -42,5 +43,12 @@ class Post extends Model
             ->log('The subject name is :subject.name, the causer name is :causer.name and Laravel is :properties.laravel');
 
     }
-    
+
+    public function publish_date()
+    {
+
+        //return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d-mmm-Y');
+        return $this->created_at->diffForHumans();
+    }
+
 }

@@ -109,11 +109,11 @@ body {
   top: 0 !important;
 }
 
-a {
+/* a {
   text-decoration: none;
   cursor: pointer;
   color: var(--thm-base);
-}
+} */
 
 .theme_color {
   color: var(--thm-base);
@@ -274,10 +274,10 @@ figure {
 .btn-style-one .btn-title {
   position: relative;
   display: block;
-  font-size: 18px;
-  line-height: 30px;
-  font-weight: 400;
-  padding: 19px 50px 16px;
+  font-size: 16px;
+  line-height: 15px;
+  font-weight: 500;
+  padding: 15px 20px 15px;
   z-index: 1;
 }
 
@@ -486,7 +486,7 @@ img {
 ***/
 
 .main-header {
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   top: 0;
   display: block;
@@ -503,9 +503,9 @@ img {
   left: 0;
   top: 0;
   width: 100%;
-  background: none;
+  background: #171717;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 1;
+  z-index: 99999;
   -webkit-transition: all 300ms ease;
   -moz-transition: all 300ms ease;
   -ms-transition: all 300ms ease;
@@ -540,7 +540,7 @@ img {
 .main-header .header-upper .logo-box {
   position: relative;
   float: left;
-  padding: 40px 0px;
+  padding: 20px 0px;
   margin-right: 50px;
   z-index: 7;
 }
@@ -567,7 +567,7 @@ img {
 .main-header .other-links .link-box {
   position: relative;
   float: left;
-  padding: 34px 0px;
+  padding: 16px 0px;
 }
 
 .main-header .other-links .link-box .link {
@@ -604,7 +604,7 @@ img {
 .main-header .other-links .link-box .number {
   position: relative;
   display: block;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 24px;
 }
@@ -620,7 +620,7 @@ img {
 .main-header .other-links .search-btn {
   position: relative;
   float: left;
-  padding: 40px 0px;
+  padding: 20px 0px;
   padding-right: 50px;
   margin-right: 50px;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
@@ -673,7 +673,7 @@ img {
 .main-menu .navigation > li {
   position: relative;
   float: left;
-  padding: 30px 0px;
+  padding: 12px 0px;
   margin-right: 40px;
   -webkit-transition: all 300ms ease;
   -moz-transition: all 300ms ease;
@@ -1373,13 +1373,13 @@ img.lazy-image.loaded {
 .default-form .form-group select {
   position: relative;
   display: block;
-  height: 70px;
+  height: 50px;
   width: 100%;
-  font-size: 18px;
+  font-size: 14px;
   color: var(--thm-black);
-  line-height: 40px;
-  font-weight: 400;
-  padding: 14px 30px;
+  line-height: 28px;
+  font-weight: 500;
+  padding: 5px 20px;
   letter-spacing: 0.02em;
   background-color: #f4f5f8;
   border: 1px solid #f4f5f8;
@@ -4924,7 +4924,7 @@ img.lazy-image.loaded {
   display: inline-block;
   vertical-align: middle;
   margin: 0 20px 5px 0px;
-  font-size: 16px;
+  font-size: 10px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -4941,7 +4941,7 @@ img.lazy-image.loaded {
 
 .news-block-two .lower-box h4 {
   text-transform: uppercase;
-  font-size: 26px;
+  font-size: 20px;
   line-height: 1.1em;
   color: var(--thm-black);
   margin-bottom: 30px;
@@ -8359,6 +8359,7 @@ img.lazy-image.loaded {
 .sidebar-page-container {
   position: relative;
   padding: 60px 0px 60px;
+  margin-top: 50px;
 }
 
 .sidebar-page-container .content-side {

@@ -10,7 +10,7 @@
 
 @section('content')
 
-	<!-- Banner Section -->
+	{{-- <!-- Banner Section -->
 	<section class="page-banner">
 		<div class="image-layer" style="background-image:url({{asset('public/client/images/background/image-7.jpg')}});"></div>
 		<div class="shape-1"></div>
@@ -29,7 +29,7 @@
 			 </div>
 		</div>
   	</section>
-	<!--End Banner Section -->
+	<!--End Banner Section --> --}}
 
 	<div class="sidebar-page-container">
 		<div class="auto-container">
@@ -50,16 +50,15 @@
                                         <div class="lower-box">
                                             <div class="post-meta">
                                                     <ul class="clearfix">
-                                                        <li><span class="far fa-clock"></span> 20 Mar</li>
-                                                        <li><span class="far fa-user-circle"></span> Admin</li>
+                                                        <li><span class="far fa-clock"></span>{{ $post->publish_date() }} 20 Mar</li>
+                                                        <li><span class="far fa-user-circle"></span> {{ $post->author->firstname }},{{ $post->author->lastname }}</li>
                                                         <li><span class="far fa-comments"></span> 2 Comments</li>
                                                     </ul>
                                             </div>
                                             <h4><a href="{{route('app.blog',$post->slug)}}">{{$post->title}}</a>
                                             </h4>
                                             <div class="text">{!!str_limit($post->body,400)!!}</div>
-                                            <div class="link-box"><a class="theme-btn" href="blog-single.html">Read More</a>
-                                            </div>
+
                                         </div>
                                     </div>
                             </div>

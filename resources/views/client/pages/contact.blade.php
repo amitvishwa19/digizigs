@@ -9,34 +9,12 @@
 
 
 @section('content')
-	
-	<!-- Banner Section -->
-	<section class="page-banner">
-		<div class="image-layer" style="background-image:url({{asset('public/client/images/background/image-7.jpg')}});"></div>
-		<div class="shape-1"></div>
-		<div class="shape-2"></div>
-		<div class="banner-inner">
-			 <div class="auto-container">
-				  <div class="inner-container clearfix">
-						<h1>Contact</h1>
-						<div class="page-nav">
-							 <ul class="bread-crumb clearfix">
-							 		<li><a href="{{route('app.home')}}">Home</a></li>
-								  	<li class="active">Contact</li>
-							 </ul>
-						</div>
-				  </div>
-			 </div>
-		</div>
-  	</section>
-	<!--End Banner Section -->
 
-	
    <!--Contact Section-->
    <section class="contact-section">
       <div class="auto-container">
-          
-       
+
+
           <div class="form-box">
               <div class="sec-title">
                   <h2>Write Us a Message<span class="dot">.</span></h2>
@@ -82,7 +60,9 @@
           </div>
       </div>
    </section>
-	    
+
+   @include('client.partials.action')
+
 @endsection
 
 
@@ -91,15 +71,15 @@
 
 
 @section('javascript')
-   
-	
+
+
   	<script>
   		$(function(){
          'use strict'
 
-         
 
-         
+
+
 
       });
   	</script>
