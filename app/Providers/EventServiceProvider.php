@@ -38,6 +38,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\Login\LoginEvent' => [
             'App\Listeners\Login\LoginListner',
+        ],
+        'App\Events\SubscriptionEvent' => [
+            'App\Listeners\SubscriptionListner',
+        ],
+        'App\Events\InquiryEvent' => [
+            'App\Listeners\InquiryListner',
         ]
 
     ];

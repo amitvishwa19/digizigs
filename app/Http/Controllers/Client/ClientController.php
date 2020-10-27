@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Events\SubscriptionEvent;
 use App\Http\Controllers\Controller;
 
 class ClientController extends Controller
@@ -50,7 +51,7 @@ class ClientController extends Controller
         //$response = new Response('Hello world');
         //$response->withCookie(cookie('subscription','subscription',10));
 
-
+        event(new SubscriptionEvent($request));
 
 
         return redirect() ->route('app.home')->withCookie(cookie('subscription','subscription',10));

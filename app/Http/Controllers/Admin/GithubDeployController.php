@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\GitHubNotification;
+use Symfony\Component\Process\Process;
 
 use Artisan;
 use Log;
@@ -75,6 +76,14 @@ class GithubDeployController extends Controller
 
     public function deploy(Request $request)
     {
+        $root_path = base_path();
+        $process = new Process($root_path .'\deploy.sh');
+
+        $process->run(function ($type, $buffer) {
+            echo $buffer;
+        });
+
+        return $root_path;
         activity()->log('Application Down for Maintainence/Update');
         Artisan::call("down");
 
