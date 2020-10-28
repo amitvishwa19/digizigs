@@ -77,7 +77,13 @@ class GithubDeployController extends Controller
     public function deploy(Request $request)
     {
 
+        $githubPayload = $request->getContent();
+        $postdata = json_decode($request->getContent(), TRUE);
+        $githubHash = $request->header('X-Hub-Signature');
+
+        app('log')->debug($postdata);
         app('log')->debug('Github Webhook event');
+
         return response()->json(['message'=>'Successfully delivered notification'],200);
 
         return 'wola';
