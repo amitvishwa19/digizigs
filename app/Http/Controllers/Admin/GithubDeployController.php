@@ -77,7 +77,7 @@ class GithubDeployController extends Controller
     public function deploy(Request $request)
     {
         $root_path = base_path();
-        $process = new Process($root_path .'\deploy.sh');
+        $process = new Process($root_path .'/deploy.sh');
 
         $process->run(function ($type, $buffer) {
             echo $buffer;
