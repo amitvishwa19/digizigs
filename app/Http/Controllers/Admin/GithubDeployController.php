@@ -85,14 +85,10 @@ class GithubDeployController extends Controller
             $localToken = setting('app.autogitdeploykey');//config('gitdeploy.secret_key');
             $localHash = 'sha1=' . hash_hmac('sha1', $githubPayload, $localToken, false);
 
-            app('log')->debug($postdata);
-            app('log')->debug($githubHash);
-            app('log')->debug('Github Webhook event');
-
             if (hash_equals($githubHash, $localHash)) {
 
-                app('log')->debug('App secret hash mached');
-
+                app('log')->debug('App secret hash mached,auto deploy success');
+                User::first()->notify(new GitHubNotification());
             }
 
         }
