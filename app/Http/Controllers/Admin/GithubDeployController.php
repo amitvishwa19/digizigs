@@ -87,8 +87,16 @@ class GithubDeployController extends Controller
 
             if (hash_equals($githubHash, $localHash)) {
 
-                app('log')->debug('App secret hash mached,auto deploy success');
                 User::first()->notify(new GitHubNotification());
+
+                $root_path = base_path();
+                $process = new Process($root_path .'/deploy.sh');
+
+                $process->run(function ($type, $buffer) {
+                    echo $buffer;
+                });
+
+                return response()->json(['message'=>'Successfully delivered notification'],200);
             }
 
         }
@@ -99,25 +107,9 @@ class GithubDeployController extends Controller
 
 
 
-        return response()->json(['message'=>'Successfully delivered notification'],200);
-
-        return 'wola';
-
-        $root_path = base_path();
-        $process = new Process($root_path .'/deploy.sh');
-
-        $process->run(function ($type, $buffer) {
-            echo $buffer;
-        });
-
-        return $root_path;
 
 
-        return redirect()->route('setting.index',['type'=>$request->query('type')])
-        ->with([
-                'message'    =>'Application repository deployed from github',
-                'alert-type' => 'success',
-            ]);
+
 
     }
 
