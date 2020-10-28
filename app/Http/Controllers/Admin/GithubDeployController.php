@@ -76,6 +76,10 @@ class GithubDeployController extends Controller
 
     public function deploy(Request $request)
     {
+
+        app('log')->debug('Github Webhook event');
+        return response()->json(['message'=>'Successfully delivered notification'],200);
+
         $root_path = base_path();
         $process = new Process($root_path .'/deploy.sh');
 
@@ -84,35 +88,7 @@ class GithubDeployController extends Controller
         });
 
         return $root_path;
-        activity()->log('Application Down for Maintainence/Update');
-        Artisan::call("down");
 
-        //Git pull fires
-        Terminal::run('git pull');
-        activity()->log('Git pull');
-
-        //Updating composer
-        Terminal::run('composer install --no-interaction --no-dev --prefer-dist');
-        activity()->log('Composer install');
-
-
-        Artisan::call("migrate --force");
-        activity()->log('Performing Migration');
-
-        Artisan::call("cache:clear");
-        activity()->log('Clear Cache');
-
-
-        // //Clear Config
-        // Artisan::call("config:clear");
-        // activity()->log('Clear Config');
-
-        // //Config Cache
-        // Artisan::call("config:cache");
-        // activity()->log('Config Cache');
-
-        Artisan::call("up");
-        activity()->log('Application Up after Maintainence/Update');
 
         return redirect()->route('setting.index',['type'=>$request->query('type')])
         ->with([
