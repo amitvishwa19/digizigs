@@ -30,7 +30,7 @@ class GitHubNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','slack','database'];
+        return ['slack','database'];
     }
 
     /**
@@ -53,8 +53,8 @@ class GitHubNotification extends Notification
             ->success()
             ->content('New update of application is avaliable ')
             ->attachment(function ($attachment){
-                $attachment->title('Version :: ' . '2.0.1')
-                            ->content('Description :: ' . 'Slack notification for github update');
+                $attachment->title('Github Auto Deploy')
+                            ->content('Application auto deployed from github');
             });
     }
 
