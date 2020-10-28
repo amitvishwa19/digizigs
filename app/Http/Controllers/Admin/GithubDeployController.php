@@ -77,27 +77,31 @@ class GithubDeployController extends Controller
     public function deploy(Request $request)
     {
         if(setting('app.autogitdeploy') == 'true'){
-            app('log')->debug('Git Auto deploy is true');
+
+            $githubPayload = $request->getContent();
+            $postdata = json_decode($request->getContent(), TRUE);
+            $githubHash = $request->header('X-Hub-Signature');
+
+            $localToken = setting('app.autogitdeploykey');//config('gitdeploy.secret_key');
+            $localHash = 'sha1=' . hash_hmac('sha1', $githubPayload, $localToken, false);
+
+            app('log')->debug($postdata);
+            app('log')->debug($githubHash);
+            app('log')->debug('Github Webhook event');
+
+            if (hash_equals($githubHash, $localHash)) {
+
+                app('log')->debug('App secret hash mached');
+
+            }
+
         }
 
 
 
-        $githubPayload = $request->getContent();
-        $postdata = json_decode($request->getContent(), TRUE);
-        $githubHash = $request->header('X-Hub-Signature');
 
-        $localToken = 'digizigs';//config('gitdeploy.secret_key');
-        $localHash = 'sha1=' . hash_hmac('sha1', $githubPayload, $localToken, false);
 
-        app('log')->debug($postdata);
-        app('log')->debug($githubHash);
-        app('log')->debug('Github Webhook event');
 
-        if (hash_equals($githubHash, $localHash)) {
-            app('log')->debug('App secret hash mached');
-        }else{
-            app('log')->debug('App secret hash not mached');
-        }
 
         return response()->json(['message'=>'Successfully delivered notification'],200);
 
