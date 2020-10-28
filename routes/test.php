@@ -3,6 +3,8 @@
 use App\Jobs\TestJob;
 use App\Models\Order;
 use App\Mail\TestMail;
+use App\Classes\Setting;
+use App\Console\Commands\GithubDeploy;
 use App\Jobs\MailSendJob;
 use Illuminate\Support\Facades\Mail;
 use App\Events\Order\OrderProcessEvent;
@@ -22,4 +24,14 @@ Route::get('/ptm',function(){
     $orderId = 'SA1597488700';
     //dd(config('services.paytm-wallet.callback_url')) ;
     event(new OrderProcessEvent($status,$orderId));
+});
+
+Route::get('/settings',function(){
+
+    $setting = new Setting;
+
+    $GithubDeploy = $setting->get('app.name');
+    return $GithubDeploy;
+
+
 });

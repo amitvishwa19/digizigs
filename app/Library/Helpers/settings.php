@@ -16,34 +16,34 @@ if (! function_exists('setting')) {
         }
 
         if(is_null($value)){
-            $globalCache = config('digizigs.settings.cache', false);
+            //$globalCache = config('digizigs.settings.cache', false);
 
-            if ($globalCache && Cache::tags('settings')->has($key)) {
-                return Cache::tags('settings')->get($key);
-            }
+            // if ($globalCache && Cache::tags('settings')->has($key)) {
+            //     return Cache::tags('settings')->get($key);
+            // }
 
-            if ($setting_cache === null) {
-                if ($globalCache) {
-                    // A key is requested that is not in the cache
-                    // this is a good opportunity to update all keys
-                    // albeit not strictly necessary
-                    Cache::tags('settings')->flush();
-                }
-                
+            //if ($setting_cache === null) {
+                // if ($globalCache) {
+                //     // A key is requested that is not in the cache
+                //     // this is a good opportunity to update all keys
+                //     // albeit not strictly necessary
+                //     Cache::tags('settings')->flush();
+                // }
+
                 foreach (Setting::all() as $setting) {
                     $keys = explode('.', $setting->key);
                     $keys = $setting->key;
                     @$setting_cache[$keys] = $setting->value;
 
-                    if ($globalCache) {
-                        Cache::tags('settings')->forever($setting->key, $setting->value);
-                    }
+                    // if ($globalCache) {
+                    //     Cache::tags('settings')->forever($setting->key, $setting->value);
+                    // }
                 }
-            }
+            //}
 
             //$parts = explode('.', $key);
-            
-            return @$setting_cache[$key] ?: $default;
+
+            return @$setting_cache[$key] ?: null;
             // if (count($parts) == 2) {
             //     return @$setting_cache[$parts[0]][$parts[1]] ?: $default;
             // } else {
@@ -52,7 +52,7 @@ if (! function_exists('setting')) {
         }else{
             Setting::updateOrCreate(['key'=>$key],['value'=>$value]);
         }
-        
+
     }
 
 }
@@ -68,7 +68,7 @@ if (! function_exists('app_setting')) {
             return  'Digizigs New Setting';
         }
 
-        
+
     }
 }
 

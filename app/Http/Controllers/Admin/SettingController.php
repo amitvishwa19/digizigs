@@ -37,6 +37,8 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $themes = $this->themes;
+
+
         if($request->query('type') == 'global'){
 
             $validate = $request->validate([
@@ -82,6 +84,8 @@ class SettingController extends Controller
             }else{
                 setting('app.autogitdeploy','false');
             }
+
+            setting('app.autogitdeploykey',$request->github_secret);
 
         }
 

@@ -14,7 +14,7 @@ class SettingSeed extends Seeder
     {
         Setting::create(['key' => 'app.name','value'=> 'Name for your application']);
         Setting::create(['key' => 'app.description','value'=> 'Sort description of application']);
-        Setting::create(['key' => 'app.icon','value'=> 'Application Icon path']);
+        Setting::create(['key' => 'app.logo','value'=> 'Application Logo path']);
         Setting::create(['key' => 'app.fevicon','value'=> 'Application Fevicon path']);
         Setting::create(['key' => 'app.page','value'=>'blog']);
         Setting::create(['key' => 'app.theme','value'=>'default']);
@@ -22,5 +22,6 @@ class SettingSeed extends Seeder
         Setting::create(['key' => 'app.registration','value'=>'no']);
         Setting::create(['key' => 'app.logo','value'=>'no']);
         Setting::create(['key' => 'app.autogitdeploy','value'=>'false']);
+        Setting::create(['key' => 'app.autogitdeploykey','value'=>'KeyHere']);
     }
 }
