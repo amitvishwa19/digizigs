@@ -80,6 +80,8 @@ class GithubDeployController extends Controller
         app('log')->debug('Github Webhook event');
         return response()->json(['message'=>'Successfully delivered notification'],200);
 
+        return 'wola';
+
         $root_path = base_path();
         $process = new Process($root_path .'/deploy.sh');
 
