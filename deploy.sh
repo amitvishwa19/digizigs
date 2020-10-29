@@ -7,7 +7,7 @@ php artisan down
 git pull
 
 # update PHP dependencies
-composer install --no-interaction #--no-dev --prefer-dist
+composer install #--no-interaction #--no-dev --prefer-dist
 
 # --no-interaction Do not ask any interactive question
 # --no-dev  Disables installation of require-dev packages.

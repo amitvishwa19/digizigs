@@ -101,16 +101,6 @@ class GithubDeployController extends Controller
 
         }
 
-
-
-
-
-
-
-
-
-
-
     }
 
     private function formatIPAddress(string $ip) {
