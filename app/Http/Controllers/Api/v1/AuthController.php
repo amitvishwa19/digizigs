@@ -30,7 +30,7 @@ class AuthController extends Controller
         if ($token = $this->guard()->attempt($credentials)) {
             $user = auth()->user();
             //return $this->respondWithToken($token);
-            return response()->json(['success' => true,'token'=>$token,'user'=>$user], 401);
+            return response()->json(['success' => true,'token'=>$token,'user'=>$user], 200);
         }
 
         return response()->json(['success' => false,'message'=>'Invalid email or password'], 401);
