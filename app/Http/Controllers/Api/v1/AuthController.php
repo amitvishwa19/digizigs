@@ -33,7 +33,7 @@ class AuthController extends Controller
             return response()->json(['success' => true,'token'=>$token,'user'=>$user], 200);
         }
 
-        return response()->json(['success' => false,'message'=>'Invalid email or password'], 401);
+        return response()->json(['success' => false,'token'=>null,'user'=>null], 401);
     }
 
     public function user(){
