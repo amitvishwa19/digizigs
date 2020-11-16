@@ -30,15 +30,15 @@ class AuthController extends Controller
         if ($token = $this->guard()->attempt($credentials)) {
             $user = auth()->user();
             //return $this->respondWithToken($token);
-            return response()->json(['success' => true,'token'=>$token,'user'=>$user], 200);
+            return response()->json(['success' => true,'message'=>'Login success','token'=>$token], 200);
         }
 
-        return response()->json(['success' => false,'token'=>null,'user'=>null], 401);
+        return response()->json(['success' => false,'message'=>'Invalid Credentials','token'=>null], 401);
     }
 
     public function user(){
 
-        return response()->json(['user' => 'Vishwa'], 200);
+        return response()->json($this->guard()->user(), 200);
 
     }
 
@@ -51,7 +51,13 @@ class AuthController extends Controller
 
     public function refresh()
     {
-        return $this->respondWithToken($this->guard()->refresh());
+        //return response()->json(["access_token"=>"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMC4wLjIuMlwvZGlnaXppZ3NcL2FwaVwvdjFcL2F1dGhcL3JlZnJlc2giLCJpYXQiOjE2MDU1MDMwNTQsImV4cCI6MTYwNTU4OTk1MywibmJmIjoxNjA1NTAzNTUzLCJqdGkiOiJTeXhpR0lUejlhejdkUXpTIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.viEl5HcIQf5Jm741MBF-uC2ZTPCf0KLviakZCTUjivA","token_type"=>"bearer","expires_in"=>86400]);
+        $token = $this->respondWithToken($this->guard()->refresh());
+        if($token){
+            return $token;
+        }else{
+            return null;
+        }
     }
 
     public function users()
