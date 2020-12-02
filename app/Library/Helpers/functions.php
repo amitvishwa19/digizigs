@@ -63,7 +63,7 @@ if(! function_exists('category')){
 
 if(! function_exists('uploadImage')){
     function uploadImage($image = null,$path = null){
-        if(!$image){ return 'Please provide image';}
+        if(!$image){ return null;}
         $image_name = time().'_'.$image->getClientOriginalName();
         $path = 'uploads/images';
         // $img = Image::make($image);

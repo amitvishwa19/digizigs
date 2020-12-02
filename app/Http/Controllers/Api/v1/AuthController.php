@@ -45,25 +45,15 @@ class AuthController extends Controller
 
     public function user_update(Request $request){
 
-        app('log')->debug('Post request for profile upload from digilearn app');
-
-        if($request->file('avatar')){
-            app('log')->debug('Post request for profile upload has a file');
-        }else{
-            app('log')->debug('Post request for profile upload dont have any file');
-        }
-
         $avatar_url = uploadImage($request->file('avatar'));
-        app('log')->debug($avatar_url);
+        //app('log')->debug($avatar_url);
 
-        //return $avatar_url;
-        //return $request->all();
         $tokenFetch = JWTAuth::parseToken()->authenticate();
         $token = str_replace("Bearer ", "", $request->header('Authorization'));
         $user = JWTAuth::authenticate($request->token);
         //$user = $this->guard()->user();
-        $user->firstname = $request->firstName;
-        $user->lastname = $request->lastName;
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
         $user->email = $request->email;
         $user->avatar_url = $avatar_url;
         $user->save();
