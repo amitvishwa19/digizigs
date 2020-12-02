@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Api\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Api\Controller;
 
 class AuthController extends Controller
 {
+
     public function register(Request $request)
     {
         $register = $request->validate([
@@ -36,10 +38,35 @@ class AuthController extends Controller
         return response()->json(['success' => false,'message'=>'Invalid Credentials','token'=>null], 401);
     }
 
-    public function user(){
-
+    public function user()
+    {
         return response()->json($this->guard()->user(), 200);
+    }
 
+    public function user_update(Request $request){
+
+        app('log')->debug('Post request for profile upload from digilearn app');
+
+        if($request->file('avatar')){
+            app('log')->debug('Post request for profile upload has a file');
+        }else{
+            app('log')->debug('Post request for profile upload dont have any file');
+        }
+
+        $avatar_url = uploadImage($request->file('avatar'));
+        app('log')->debug($avatar_url);
+
+        return $avatar_url;
+        return $request->all();
+        $tokenFetch = JWTAuth::parseToken()->authenticate();
+        $token = str_replace("Bearer ", "", $request->header('Authorization'));
+        $user = JWTAuth::authenticate($request->token);
+        //$user = $this->guard()->user();
+        $user->firstname = $request->firstName;
+        $user->lastname = $request->lastName;
+        $user->email = $request->email;
+        $user->save();
+        return $user;
     }
 
     public function logout()
