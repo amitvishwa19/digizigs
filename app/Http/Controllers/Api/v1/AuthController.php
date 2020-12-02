@@ -56,8 +56,8 @@ class AuthController extends Controller
         $avatar_url = uploadImage($request->file('avatar'));
         app('log')->debug($avatar_url);
 
-        return $avatar_url;
-        return $request->all();
+        //return $avatar_url;
+        //return $request->all();
         $tokenFetch = JWTAuth::parseToken()->authenticate();
         $token = str_replace("Bearer ", "", $request->header('Authorization'));
         $user = JWTAuth::authenticate($request->token);
@@ -65,6 +65,7 @@ class AuthController extends Controller
         $user->firstname = $request->firstName;
         $user->lastname = $request->lastName;
         $user->email = $request->email;
+        $user->avatar_url = $avatar_url;
         $user->save();
         return $user;
     }
