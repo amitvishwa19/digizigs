@@ -45,7 +45,7 @@ class AuthController extends Controller
 
     public function user_update(Request $request){
 
-        $avatar_url = uploadImage($request->file('avatar'));
+
         //app('log')->debug($avatar_url);
 
         $tokenFetch = JWTAuth::parseToken()->authenticate();
@@ -55,9 +55,18 @@ class AuthController extends Controller
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
         $user->email = $request->email;
-        $user->avatar_url = $avatar_url;
+
+        if($request->avatar == 'remove'){
+            $user->avatar_url = null;
+        }
+
+        if($request->file('avatar')){
+            $avatar_url = uploadImage($request->file('avatar'));
+            $user->avatar_url = $avatar_url;
+        }
+
         $user->save();
-        return $user;
+        return response()->json($this->guard()->user(), 200);
     }
 
     public function logout()
