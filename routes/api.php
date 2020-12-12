@@ -28,4 +28,10 @@ Route::group(['prefix' => 'v1'],function(){
     Route::put('/user/post','Api\v1\PostController@store')->middleware('auth:api');
     Route::delete('/user/post/{id}','Api\v1\PostController@destroy')->middleware('auth:api');
 
+
+    //Class
+    Route::get('/user/class','Api\v1\ClassController@index');
+
+
+
 });

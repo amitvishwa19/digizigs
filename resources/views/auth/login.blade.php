@@ -5,7 +5,7 @@
 @section('content')
     <div class="login-page">
         <div class="row">
-            <div class="col-9 left-area">
+            <div class="xs-hidden col-9 left-area">
                 <img src="https://miro.medium.com/max/2625/1*qAX1633WKgkCBjW-7BICCA.jpeg" alt="">
 
             </div>
