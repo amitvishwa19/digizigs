@@ -42,8 +42,8 @@ Route::prefix('/appadmin')->middleware(['auth'])->group(base_path('routes/admin.
 //Digishop theme route file
 Route::prefix('/digishop')->group(base_path('routes/digishop.php'));
 
-//Learning Management systekm
-Route::prefix('/lms')->middleware('auth')->group(base_path('routes/lms.php'));
+//Digilearn
+Route::prefix('/digilearn')->group(base_path('routes/digilearn.php'));
 
 //Matrimony
 Route::prefix('/matrimony')->group(base_path('routes/matrimony.php'));
