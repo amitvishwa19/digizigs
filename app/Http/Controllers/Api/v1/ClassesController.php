@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Models\Section;
+use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\ClassesResource;
 
-class ClassController extends Controller
+class ClassesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,9 @@ class ClassController extends Controller
      */
     public function index()
     {
-        $class = Section::get();
-        return $class;
+        $class = Classes::get();
+        //return ClassesResource::collection($class);
+        return response()->json(ClassesResource::collection($class), 200);
     }
 
     /**

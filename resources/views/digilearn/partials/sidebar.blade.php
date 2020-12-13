@@ -36,7 +36,7 @@
         </li>
         {{-- Class --}}
         <li class="nav-item">
-            <a href="{{route('class.index')}}" class="nav-link"><i class="fa fa-briefcase" aria-hidden="true"></i>Class</a>
+            <a href="{{route('classes.index')}}" class="nav-link"><i class="fa fa-briefcase" aria-hidden="true"></i>Classes</a>
         </li>
         {{-- Section --}}
         <li class="nav-item">

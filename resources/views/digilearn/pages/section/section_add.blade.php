@@ -19,7 +19,7 @@
       <div>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-            <li class="breadcrumb-item"><a href="{{route('app.admin.home')}}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{route('digilearn.dashboard')}}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="{{route('section.index')}}">Sections</a></li>
             <li class="breadcrumb-item active" aria-current="page">Section</li>
           </ol>

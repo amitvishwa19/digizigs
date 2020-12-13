@@ -30,7 +30,7 @@ Route::group(['prefix' => 'v1'],function(){
 
 
     //Class
-    Route::get('/user/class','Api\v1\ClassController@index');
+    Route::get('/user/classes','Api\v1\ClassesController@index');
 
 
 

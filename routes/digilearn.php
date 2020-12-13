@@ -23,7 +23,7 @@ Route::group(['prefix' => 'appadmin','middleware'=>['auth']],function(){
 
 
     Route::get('/','digilearn\admin\AppController@index')->name('digilearn.dashboard');
-    Route::resource('/class','digilearn\admin\ClassController');
+    Route::resource('/classes','digilearn\admin\ClassesController');
     Route::resource('/section','digilearn\admin\SectionController');
     Route::resource('/course','digilearn\admin\CourseController');
     Route::resource('/lesson','digilearn\admin\LessonController');
