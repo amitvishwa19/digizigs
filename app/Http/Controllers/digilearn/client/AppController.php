@@ -18,4 +18,17 @@ class AppController extends Controller
         //return view('digilearn.pages.app.support');
         return 'Digilearn Support';
     }
+
+    public function terms()
+    {
+        //return view('digilearn.pages.app.support');
+        return 'Digilearn Terms';
+    }
+
+    public function privacypolicy()
+    {
+        //return view('digilearn.pages.app.support');
+        return 'Digilearn Privacy Policy';
+    }
+
 }

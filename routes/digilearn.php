@@ -7,6 +7,8 @@
 //FrontEnd
 Route::get('/','digilearn\client\AppController@home')->name('digilearn.home');
 Route::get('/support','digilearn\client\AppController@support')->name('digilearn.support');
+Route::get('/terms','digilearn\client\AppController@terms')->name('digilearn.terms');
+Route::get('/privacypolicy','digilearn\client\AppController@privacypolicy')->name('digilearn.privacypolicy');
 
 
 //Backend
@@ -21,6 +23,7 @@ Route::group(['prefix' => 'appadmin','middleware'=>['auth']],function(){
 
 
     Route::get('/','digilearn\admin\AppController@index')->name('digilearn.dashboard');
+    Route::resource('/class','digilearn\admin\ClassController');
     Route::resource('/section','digilearn\admin\SectionController');
     Route::resource('/course','digilearn\admin\CourseController');
     Route::resource('/lesson','digilearn\admin\LessonController');

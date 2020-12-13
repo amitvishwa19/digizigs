@@ -34,7 +34,11 @@
               <li><a href="">Staff Attendence</a></li>
             </ul>
         </li>
-        {{-- Classes --}}
+        {{-- Class --}}
+        <li class="nav-item">
+            <a href="{{route('class.index')}}" class="nav-link"><i class="fa fa-briefcase" aria-hidden="true"></i>Class</a>
+        </li>
+        {{-- Section --}}
         <li class="nav-item">
             <a href="{{route('section.index')}}" class="nav-link"><i class="fa fa-clone" aria-hidden="true"></i>Sections</a>
         </li>
