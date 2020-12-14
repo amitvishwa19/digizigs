@@ -55,6 +55,7 @@ class AuthController extends Controller
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
         $user->email = $request->email;
+        $user->type = $request->type;
 
         if($request->avatar == 'remove'){
             $user->avatar_url = null;
@@ -78,7 +79,7 @@ class AuthController extends Controller
 
     public function refresh()
     {
-       
+
         //return response()->json(["access_token"=>"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMC4wLjIuMlwvZGlnaXppZ3NcL2FwaVwvdjFcL2F1dGhcL3JlZnJlc2giLCJpYXQiOjE2MDU1MDMwNTQsImV4cCI6MTYwNTU4OTk1MywibmJmIjoxNjA1NTAzNTUzLCJqdGkiOiJTeXhpR0lUejlhejdkUXpTIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.viEl5HcIQf5Jm741MBF-uC2ZTPCf0KLviakZCTUjivA","token_type"=>"bearer","expires_in"=>86400]);
         $token = $this->respondWithToken($this->guard()->refresh());
         if($token){

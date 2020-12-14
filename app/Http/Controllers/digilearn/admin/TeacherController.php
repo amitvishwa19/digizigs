@@ -70,13 +70,13 @@ class TeacherController extends Controller
         }
 
 
-        return view('lms.pages.teacher.teacher');
+        return view('digilearn.pages.teacher.teacher');
 
     }
 
     public function create()
     {
-        return view('lms.pages.teacher.teacher_add');
+        return view('digilearn.pages.teacher.teacher_add');
     }
 
     public function store(TeacherRequest $request)
@@ -126,7 +126,7 @@ class TeacherController extends Controller
 
         //return response()->json($teacher);
 
-        return view('lms.pages.teacher.teacher_edit',compact('teacher'));
+        return view('digilearn.pages.teacher.teacher_edit',compact('teacher'));
     }
 
     public function update(TeacherRequest $request, $id)

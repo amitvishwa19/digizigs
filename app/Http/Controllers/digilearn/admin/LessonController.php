@@ -67,7 +67,7 @@ class LessonController extends Controller
         }
 
 
-        return view('digilearn.dashboard.pages.lesson.lesson');
+        return view('digilearn.pages.lesson.lesson');
 
     }
 
@@ -75,7 +75,7 @@ class LessonController extends Controller
     {
         $courses = Course:: orderby('id','desc')->where('status',true)->get();
         $exams = Exam:: orderby('id','desc')->where('status',true)->get();
-        return view('digilearn.dashboard.pages.lesson.lesson_add',compact('courses','exams'));
+        return view('digilearn.pages.lesson.lesson_add',compact('courses','exams'));
     }
 
     public function store(Request $request)
@@ -116,7 +116,7 @@ class LessonController extends Controller
     public function show($id)
     {
         $lesson = Lesson::findOrFail($id);
-        return view('digilearn.dashboard.pages.lesson.lesson_view',compact('lesson'));
+        return view('digilearn.pages.lesson.lesson_view',compact('lesson'));
         return response()->json($lesson);
     }
 
@@ -127,7 +127,7 @@ class LessonController extends Controller
         $exams = Exam:: orderby('id','desc')->where('status',true)->get();
         //return response()->json($lesson);
 
-        return view('digilearn.dashboard.pages.lesson.lesson_edit',compact('lesson','courses','exams'));
+        return view('digilearn.pages.lesson.lesson_edit',compact('lesson','courses','exams'));
     }
 
     public function update(Request $request, $id)

@@ -53,14 +53,14 @@ class StudentController extends Controller
         }
 
 
-        return view('digilearn.dashboard.pages.student.student');
+        return view('digilearn.pages.student.student');
 
     }
 
     public function create()
     {
         $sections = Section::where('status',true)->get();
-        return view('digilearn.dashboard.pages.student.student_add',compact('sections'));
+        return view('digilearn.pages.student.student_add',compact('sections'));
     }
 
     public function store(Request $request)
@@ -118,7 +118,7 @@ class StudentController extends Controller
         $sections = Section::where('status',true)->get();
         //return response()->json($student);
 
-        return view('digilearn.dashboard.pages.student.student_edit',compact('student','sections'));
+        return view('digilearn.pages.student.student_edit',compact('student','sections'));
     }
 
     public function update(StudentRequest $request, $id)
