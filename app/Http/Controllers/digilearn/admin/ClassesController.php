@@ -12,6 +12,7 @@ class ClassesController extends Controller
 {
     public function index(Request $request)
     {
+
         if ($request->ajax()) {
             $classes = Classes::orderby('created_at','desc')->get();
 

@@ -19,10 +19,12 @@ class ClassesResource extends JsonResource
             'title' => $this->name,
             'description' => $this->description,
             'status' => $this->status,
-            // 'meta' =>[
-            //     'version' => '1.0.0',
-            //     'author_url' => 'www.digizigs.com'
-            // ]
+            'teacher' =>[
+                'firstname' => $this->teacher->firstname,
+                'lastname' => $this->teacher->lastname,
+                'email' => $this->teacher->email,
+                'avatar' => $this->teacher->avatar_url
+            ]
         ];
     }
 }

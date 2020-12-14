@@ -16,8 +16,7 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        $class = Classes::get();
-        //return ClassesResource::collection($class);
+        $class = Classes::orderBy('created_at', 'desc')->with('teacher')->get();
         return response()->json(ClassesResource::collection($class), 200);
     }
 
