@@ -53,16 +53,19 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Models\Order');
     }
 
+
+
+    //=================================================For Digilearn=====================================================
+    public function classrooms()
+    {
+        return $this->hasMany('App\Models\Classroom','user_id');
+    }
+
     public function books()
     {
         return $this->belongsToMany('App\Models\Book','issued_books');
     }
 
-    //For Digilearn
-    public function classes()
-    {
-        return $this->hasMany('App\Models\Classes');
-    }
 
     public function student_profile()
     {
@@ -74,6 +77,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo('App\Teacher');
     }
 
+    //=================================================For Digilearn=====================================================
 
     public function routeNotificationForSlack($notification)
     {

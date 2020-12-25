@@ -15,9 +15,7 @@ class StudentController extends Controller
 {
     public function index(Request $request)
     {
-        //$students = Student::with('user','section')->orderby('created_at','desc')->get();
-        //dd($students);
-        //dd(Student::with('user')->orderby('created_at','desc')->get());
+
         if ($request->ajax()) {
             $students = Student::with('user','section')->orderby('created_at','desc')->latest('id');
 

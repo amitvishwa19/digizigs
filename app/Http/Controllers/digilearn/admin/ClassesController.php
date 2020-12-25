@@ -60,10 +60,13 @@ class ClassesController extends Controller
         ]);
 
         $classes = New Classes;
-        $classes->user_id = auth()->user()->id;
         $classes->name = $request->name;
         $classes->description = $request->description;
         $classes->save();
+
+        if($classes){
+            //$classes->user()->sync( auth()->user()->id);
+        }
 
         return redirect()->route('classes.index')
         ->with([

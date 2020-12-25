@@ -23,10 +23,13 @@ Route::group(['prefix' => 'appadmin','middleware'=>['auth']],function(){
 
 
     Route::get('/','digilearn\admin\AppController@index')->name('digilearn.dashboard');
-    Route::resource('/classes','digilearn\admin\ClassesController');
+    Route::resource('/classroom','digilearn\admin\ClassroomController');
     Route::resource('/section','digilearn\admin\SectionController');
     Route::resource('/course','digilearn\admin\CourseController');
     Route::resource('/lesson','digilearn\admin\LessonController');
+
+    Route::resource('/student','digilearn\admin\StudentController@index');
+
     Route::resource('/student','digilearn\admin\StudentController');
     Route::resource('/teacher','digilearn\admin\TeacherController');
     //Route::get('/book/issued','Admin\BookController@issued_book')->name('book.issued');

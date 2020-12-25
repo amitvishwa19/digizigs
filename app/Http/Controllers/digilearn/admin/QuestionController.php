@@ -52,13 +52,13 @@ class QuestionController extends Controller
         }
 
 
-        return view('lms.pages.question.question');
+        return view('digilearn.pages.question.question');
 
     }
 
     public function create()
     {
-        return view('lms.pages.question.question_add');
+        return view('digilearn.pages.question.question_add');
     }
 
     public function store(Request $request)
@@ -96,7 +96,7 @@ class QuestionController extends Controller
     public function show($id)
     {
         $question = Question::findOrFail($id);
-        return view('lms.pages.question.question_view',compact('question'));
+        return view('digilearn.pages.question.question_view',compact('question'));
     }
 
     public function edit($id)
@@ -107,7 +107,7 @@ class QuestionController extends Controller
 
         //return response()->json($question);
 
-        return view('lms.pages.question.question_edit',compact('question','questionOptions'));
+        return view('digilearn.pages.question.question_edit',compact('question','questionOptions'));
     }
 
     public function update(QuestionRequest $request, $id)

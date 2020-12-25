@@ -11,7 +11,7 @@ use App\Events\Order\OrderProcessEvent;
 
 Route::get('/mail',function(){
     //dispatch(new MailSendJob);
-    Mail::to('jaysvishwa@gmail.com')->send(new TestMail);
+    Mail::to('info@digizigs.com')->send(new TestMail);
     return 'Mail Sent successfully';
 });
 

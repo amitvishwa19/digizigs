@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Models\Classes;
+use App\User;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\ClassesResource;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Api\Controller;
+use App\Http\Resources\Api\ClassroomResource;
 
-class ClassesController extends Controller
+class ClassroomController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $class = Classes::orderBy('created_at', 'desc')->with('teacher')->get();
-        return response()->json(ClassesResource::collection($class), 200);
+        $user = $this->guard()->user();
+        $classroom = $user->classrooms;
+        return response()->json(ClassroomResource::collection($classroom), 200);
     }
 
     /**
@@ -63,5 +67,10 @@ class ClassesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function guard()
+    {
+        return Auth::guard();
     }
 }

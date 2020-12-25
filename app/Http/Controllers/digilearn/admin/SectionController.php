@@ -41,14 +41,15 @@ class SectionController extends Controller
                 return $crs;
             })
             ->addColumn('teachers',function(Section $section){
-                $teachers = $section->teachers;
-                $tcr = '';
-                if($teachers){
-                    foreach($teachers as $teacher){
-                       $tcr = $tcr. '<a href=""><div class="badge badge-info mr-1" >'. $teacher->user->firstname .','.$teacher->user->lastname.'</div></a>';
-                    };
-                }
-                return $tcr;
+                // $teachers = $section->teachers;
+                // $tcr = '';
+                // if($teachers){
+                //     foreach($teachers as $teacher){
+                //        $tcr = $tcr. '<a href=""><div class="badge badge-info mr-1" >'. $teacher->user->firstname .','.$teacher->user->lastname.'</div></a>';
+                //     };
+                // }
+                // return $tcr;
+                return 'teacher';
             })
             ->addColumn('students',function(Section $section){
                 return $section->students->count();

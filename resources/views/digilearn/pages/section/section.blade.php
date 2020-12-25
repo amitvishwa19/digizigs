@@ -39,9 +39,9 @@
               <tr style="padding-left:20px">
                   <th style="" class=""><b>Name</b></th>
                   <th style="width:30%" class=""><b>Description</b></th>
-                  <th style="" class=""><b>Courses</b></th>
+                  {{-- <th style="" class=""><b>Courses</b></th>
                   <th style="" class=""><b>Teachers</b></th>
-                  <th style="" class=""><b>Students</b></th>
+                  <th style="" class=""><b>Students</b></th> --}}
                   <th style="width:10%" class=""><b>Status</b></th>
                   <th style="width:10%" class=""><b>Actions</b></th>
               </tr>
@@ -83,9 +83,9 @@
         columns:[
             { data: 'name', name: 'name'},
             { data: 'description', name: 'description'},
-            { data: 'courses', name: 'courses'},
-            { data: 'teachers', name: 'teachers'},
-            { data: 'students', name: 'students'},
+            // { data: 'courses', name: 'courses'},
+            // { data: 'teachers', name: 'teachers'},
+            // { data: 'students', name: 'students'},
             { data: 'status', name: 'status'},
             { data: 'action', name: 'action' },
         ]

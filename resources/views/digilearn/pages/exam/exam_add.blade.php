@@ -128,11 +128,10 @@
         $(function(){
             'use strict'
 
-
             $('.select2').select2({
-                placeholder: 'Choose one',
-                searchInputPlaceholder: 'Search options'
-            });
+            placeholder: 'Choose one',
+            searchInputPlaceholder: 'Search options'
+        });
 
         });
   	</script>

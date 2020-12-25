@@ -67,8 +67,8 @@
                    <div class="call-us">
                        <a class="link" href="tel:+91 9712340450">
                            <span class="icon"></span>
-                           <span class="sub-text">Call Anytime</span>
-                           <span class="number">+91 9712340450</span>
+                           <span class="sub-text">Connect Anytime</span>
+                           <span class="number">info@digizigs.com</span>
                        </a>
                    </div>
                </div>

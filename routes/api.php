@@ -29,8 +29,8 @@ Route::group(['prefix' => 'v1'],function(){
     Route::delete('/user/post/{id}','Api\v1\PostController@destroy')->middleware('auth:api');
 
 
-    //Class
-    Route::get('/user/classes','Api\v1\ClassesController@index');
+    //Classroom
+    Route::get('user/classrooms','Api\v1\ClassroomController@index');
 
 
 

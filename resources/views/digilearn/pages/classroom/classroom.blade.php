@@ -1,7 +1,7 @@
 
 @extends('digilearn.layout.admin')
 
-@section('title','Classes')
+@section('title','Classroom')
 
 @section('style')
 @endsection
@@ -17,8 +17,8 @@
       <div>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-            <li class="breadcrumb-item"><a href="{{route('digilearn.dashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Classes</li>
+            <li class="breadcrumb-item"><a href="{{route('app.admin.home')}}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Classroom</li>
           </ol>
         </nav>
       </div>
@@ -27,8 +27,8 @@
     <div class="">
 
       <div class="d-flex mg-b-20">
-        <h4>Classess</h4>
-        <a href="{{route('classes.create')}}" class="btn btn-primary btn-xs mg-l-10">Add New Classes</a>
+        <h4>Classrooms</h4>
+        <a href="{{route('classroom.create')}}" class="btn btn-primary btn-xs mg-l-10">Add New Classroom</a>
       </div>
 
 
@@ -39,6 +39,8 @@
               <tr style="padding-left:20px">
                   <th style="width:20%" class=""><b>Name</b></th>
                   <th style="" class=""><b>Description</b></th>
+                  <th style="" class=""><b>Teacher</b></th>
+                  <th style="" class=""><b>Student Count</b></th>
                   <th style="width:10%" class=""><b>Status</b></th>
                   <th style="width:15%" class=""><b>Created</b></th>
                   <th style="width:15%" class=""><b>Actions</b></th>
@@ -80,10 +82,12 @@
       $('#datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('classes.index') !!}',
+        ajax: '{!! route('classroom.index') !!}',
         columns:[
             { data: 'name', name: 'name'},
             { data: 'description', name: 'description'},
+            { data: 'teacher', name: 'teacher'},
+            { data: 'students', name: 'students'},
             { data: 'status', name: 'status'},
             { data: 'created_at', name: 'created_at' },
             { data: 'action', name: 'action' },
@@ -95,7 +99,7 @@
       $(document).on('click','.delete',function(){
         var id =  $(this).attr('id');
         swalWithBootstrapButtons({
-            title: "Delete Selected Classes?",
+            title: "Delete Selected Classroom?",
             text: "You won't be able to revert this!",
             type: "warning",
             showCancelButton: true,
@@ -105,14 +109,14 @@
         }).then(result => {
             if (result.value) {
               $.ajax({
-                  url: "classes/"+id,
+                  url: "classroom/"+id,
                   type:"post",
                   data: {_method: 'delete', _token: "{{ csrf_token() }}"},
                   success: function(result){
                     location.reload();
                     toast({
                         type: "success",
-                        title: "Classes Deleted Successfully"
+                        title: "Classroom Deleted Successfully"
                     });
                   }
               });

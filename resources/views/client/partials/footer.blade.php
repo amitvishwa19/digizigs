@@ -37,7 +37,7 @@
                                        <li><a href="#">Contact</a></li>
                                    </ul>
                                </div>
-                               
+
                            </div>
                        </div>
                    </div>
@@ -49,8 +49,7 @@
                        <div class="widget-content">
                            <h6>Contact</h6>
                            <ul class="contact-info">
-                               <li class="address"><span class="icon flaticon-pin-1"></span> Vadodara <br>India</li>
-                               <li><span class="icon flaticon-call"></span><a href="tel:9712340450">+91 9712340450</a></li>
+                               <li class="address"><span class="icon flaticon-pin-1"></span> Vadodara, India</li>
                                <li><span class="icon flaticon-email-2"></span>
                                    <a href="mailto:info@digizigs.com">info@digizigs.com</a>
                                </li>
@@ -84,7 +83,7 @@
                                 @else
                                     Sign up for our latest news & articles. We won’t give you spam mails.
                                 @endif
-                               
+
                             </div>
                        </div>
                    </div>

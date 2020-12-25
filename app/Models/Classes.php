@@ -10,19 +10,10 @@ class Classes extends Model
 
     protected $guarded = ['id'];
 
-    public function teacher()
+    public function user()
     {
-        return $this->belongsTo('App\User','user_id');
+        return $this->belongsToMany('App\User','user_id');
     }
 
-    public function courses()
-    {
-        return $this->belongsToMany('App\Models\Course','sections_courses');
-    }
-
-    public function students()
-    {
-    	return $this->hasMany('App\Models\Student');
-    }
 
 }

@@ -69,7 +69,7 @@ class UserSeed extends Seeder
             ]);
             $student->assignRole('student');
             $profile = Profile::create(['user_id' => $student->id]);
-            $student_profile = Student::create(['user_id' => $student->id,'section_id' => $faker->numberBetween(1,Section::count())]);
+            //$student_profile = Student::create(['user_id' => $student->id,'section_id' => $faker->numberBetween(1,Section::count())]);
 
             //Create Teachers
             $teacher = User::create([
