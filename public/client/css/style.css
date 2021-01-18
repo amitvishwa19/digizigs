@@ -1,4 +1,4 @@
-/* Linoor - DIgital Agency HTML Template  */
+
 
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
@@ -574,7 +574,7 @@ img {
   position: relative;
   display: block;
   padding-top: 4px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   letter-spacing: 0.05em;
   padding-left: 60px;
   color: #ffffff;

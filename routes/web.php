@@ -25,6 +25,7 @@ Route::get('/verifyemail/{email}/{token}','Auth\RegisterController@verifyemail')
 //Auto Deploy from github push
 Route::post('/deploy/github-notify', 'Admin\GithubDeployController@notify')->name('git.notify');
 Route::post('/deploy/github-pull', 'Admin\GithubDeployController@deploy')->name('git.deploy');
+Route::post('/deploy/github', 'Admin\GithubDeployController@github')->name('git.deploys');
 
 //Test Routes
 Route::prefix('/test')->group(base_path('routes/test.php'));
@@ -37,7 +38,7 @@ Auth::routes();
 //Route::get('/logout/{device_id}', 'Admin\LoggedInDeviceManager@logoutDevice')->name('logged-in-devices.logoutSpecific')->middleware('auth');
 
 //Admin route
-Route::prefix('/appadmin')->middleware(['auth'])->group(base_path('routes/admin.php'));
+Route::prefix('/appadmin')->middleware(['auth','checkstatus'])->group(base_path('routes/admin.php'));
 
 //Digishop theme route file
 Route::prefix('/digishop')->group(base_path('routes/digishop.php'));

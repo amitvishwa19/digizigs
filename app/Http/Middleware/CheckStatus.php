@@ -19,10 +19,9 @@ class CheckStatus
 
         if(Auth::check() && Auth::user()->status != '1'){
             Auth::logout();
-            //dd("return back to login");
             return redirect('/login')->with('inactive', 'inactive account');
         }
-        
+
         return $next($request);
     }
 }

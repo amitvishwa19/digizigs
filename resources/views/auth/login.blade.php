@@ -27,7 +27,7 @@
                             @if(Session::has('inactive'))
                               <!-- <p class="alert alert-info">{{ Session::get('message') }}</p> -->
                               <div class="alert alert-info" role="alert">
-                                Your account is not activated ! Please activate your account. <a href="">Click here</a> to resend activation link
+                                Your account is not activated ! Please check your email for activation link. <a href="">Click here</a> to resend activation link
                               </div>
                             @endif
 

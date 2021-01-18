@@ -19171,7 +19171,7 @@ textarea.parsley-success:focus {
 }
 
 .aside-logo {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 1px;
     margin-top: -3px;
@@ -19179,7 +19179,7 @@ textarea.parsley-success:focus {
 
 @media (min-width: 992px) {
     .aside-logo {
-        font-size: 24px;
+        font-size: 18px;
     }
 }
 
@@ -67472,7 +67472,7 @@ button.bg-twitter:focus,
 
 .sidenav {
     .aside-header {
-        background-color: #22282f;
+        background-color: $sidebar_theme_dark_color;
         border-right-color: transparent;
 
         .burger-menu {
@@ -67508,7 +67508,7 @@ button.bg-twitter:focus,
 
     .aside-body {
         border-top-color: transparent;
-        background-color: #2d353e;
+        background-color: $sidebar_theme_color;
 
         .nav-aside .nav-label {
             color: #fff;

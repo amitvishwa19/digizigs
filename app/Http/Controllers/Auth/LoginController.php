@@ -13,15 +13,15 @@ class LoginController extends Controller
     use AuthenticatesUsers;
     protected $redirectTo = '/';
 
-    protected function validateLogin(Request $request)
-    {
-        $this->validate($request, [
-            $this->username() => Rule::exists('users')->where(function ($query) {
-                $query->where('status', 1);
-            }),
-            'password' => 'required|string'
-        ]);
-    }
+    // protected function validateLogin(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         $this->username() => Rule::exists('users')->where(function ($query) {
+    //             $query->where('status', 1);
+    //         }),
+    //         'password' => 'required|string'
+    //     ]);
+    // }
 
 
     public function logout(Request $request)
@@ -38,6 +38,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        //$this->middleware(['guest','checkstatus'])->except('logout');
         $this->middleware(['guest','checkstatus'])->except('logout');
     }
 }

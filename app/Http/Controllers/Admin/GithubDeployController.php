@@ -74,6 +74,11 @@ class GithubDeployController extends Controller
 
     }
 
+    public function github(Request $request)
+    {
+        return("Github Deploy");
+    }
+
     public function deploy(Request $request)
     {
         if(setting('app.autogitdeploy') == 'true'){

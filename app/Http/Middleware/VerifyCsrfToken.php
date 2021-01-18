@@ -21,6 +21,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/deploy/github-notify',
         'digishop/cart/payment/paytm/status',
-        '/deploy/github-pull'
+        '/deploy/github-pull',
+        '/deploy/github'
     ];
 }

@@ -1,6 +1,6 @@
 @extends('auth.layout')
 
-@section('title','Login')
+@section('title','Reset Password')
 
 @section('content')
     <div class="login-page">
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="login-form">
-                        <form method="POST" action="{{ route('login') }}" class="mg-b-20">
+                        <form method="POST" action="{{ route('password.update') }}" class="mg-b-20">
                             @csrf
                             <h5 class="info-title">Reset your password</h5>
 
@@ -38,15 +38,11 @@
                               </div>
                             @endif
 
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                               <input type="text" class="form-control" name="email" placeholder="yourname@yourdomain.com" required="" autofocus value="{{ old('email') }}"/>
-                               @if ($errors->has('email'))
-                                   <span class="help-block">
-                                      <strong>{{ $errors->first('email') }}</strong>
-                                   </span>
-                               @endif
-                            </div>
+                       
+
+                            
+                            <input type="hidden" class="form-control" name="email"  value="{{ $email }}" />
+                          
 
                             <div class="form-group">
                                 <label for="password">Password</label>
