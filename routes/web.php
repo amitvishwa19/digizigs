@@ -4,9 +4,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-// Route::get('/',function(){
-//    return 'Home Page';
-// });
 
 Route::prefix('/')->group(base_path('routes/client.php'));
 
@@ -41,11 +38,11 @@ Auth::routes();
 Route::prefix('/appadmin')->middleware(['auth','checkstatus'])->group(base_path('routes/admin.php'));
 
 //Digishop theme route file
-Route::prefix('/digishop')->group(base_path('routes/digishop.php'));
+//Route::prefix('/digishop')->group(base_path('routes/digishop.php'));
 
 //Digilearn
-Route::prefix('/digilearn')->group(base_path('routes/digilearn.php'));
+//Route::prefix('/digilearn')->group(base_path('routes/digilearn.php'));
 
 //Matrimony
-Route::prefix('/matrimony')->group(base_path('routes/matrimony.php'));
+//Route::prefix('/matrimony')->group(base_path('routes/matrimony.php'));
 

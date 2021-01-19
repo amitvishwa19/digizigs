@@ -11358,16 +11358,6 @@ a.text-dark:focus {
 
 /* ############### FONTS IMPORT ############### */
 
-/*
-* DashForge v1.0.0 (https://themepixels.me/dashforge)
-* Copyright 2019 ThemePixels
-* Licensed under ThemeForest License
-*
-*
-
-
-
-
 /* ############### BOOTSTRAP FRAMEWORK ############### */
 
 /*!
@@ -79856,8 +79846,10 @@ body {
 
 .card {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 0px;
+  border-radius: 5px;
   padding: 10px;
+  border: 1px solid rgba(72, 94, 144, 0.16);
+  border-radius: 0.25rem;
 }
 
 .list-group {

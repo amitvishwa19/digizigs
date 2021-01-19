@@ -48,7 +48,7 @@
             <li class="list-group-item {{(request()->type =='global') ? 'active' : 'null'}}">
               <a href="{{route('setting.index',['type'=>'global'])}}">Global Setting</a>
             </li>
-            <li class="list-group-item {{(request()->type =='localization') ? 'active' : 'null'}}">
+            {{-- <li class="list-group-item {{(request()->type =='localization') ? 'active' : 'null'}}">
               <a href="{{route('setting.index',['type'=>'localization'])}}">Localization</a>
             </li>
             <li class="list-group-item {{(request()->type =='social') ? 'active' : 'null'}}">
@@ -67,7 +67,7 @@
               <a href="{{route('setting.index',['type'=>'translation'])}}">Translation</a>
             </li>
             <li class="list-group-item {{(request()->type =='currency') ? 'active' : 'null'}}">
-              <a href="{{route('setting.index',['type'=>'currency'])}}">Currencies</a>
+              <a href="{{route('setting.index',['type'=>'currency'])}}">Currencies</a> --}}
             </li>
             <li class="list-group-item {{(request()->type =='oauth') ? 'active' : 'null'}}">
                 <a href="{{route('setting.index',['type'=>'oauth'])}}">API Access Token</a>
