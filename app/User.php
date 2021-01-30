@@ -58,7 +58,7 @@ class User extends Authenticatable implements JWTSubject
     //=================================================For Digilearn=====================================================
     public function classrooms()
     {
-        return $this->hasMany('App\Models\Classroom','user_id');
+        return $this->hasMany('App\Models\Classes','user_id');
     }
 
     public function books()
